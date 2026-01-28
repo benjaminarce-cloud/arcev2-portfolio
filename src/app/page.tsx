@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Shell } from "@/components/Shell";
-import { Row } from "@/components/Row";
 
 type Item = {
   slug: string;
@@ -37,7 +36,7 @@ const selected: Item[] = [
     title: "Cost Flight Simulator",
     hook: "What-if manufacturing P&L engine that shows portfolio margin impact in seconds, not spreadsheets.",
     meta: "Python • Streamlit • scenario engine • portfolio view • AI brief",
-    constraint: "Inputs are static CSV today; live feeds next.",
+    constraint: "Static CSV inputs today; live feeds next.",
   },
   {
     slug: "border-fleet-optimizer",
@@ -58,51 +57,79 @@ const notes: NoteItem[] = [
   },
 ];
 
+function Row({
+  href,
+  title,
+  hook,
+  meta,
+  kicker,
+}: {
+  href: string;
+  title: string;
+  hook: string;
+  meta: string;
+  kicker: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group block border-b hairline py-6 md:py-7"
+    >
+      <div className="flex items-start justify-between gap-6">
+        <div className="min-w-0">
+          <div className="text-[18px] md:text-[19px] tracking-[-0.02em]">
+            {title}
+          </div>
+
+          <div className="mt-1 text-[13px] md:text-[13.5px] leading-6 text-[color:var(--muted)] max-w-[80ch]">
+            {hook}
+          </div>
+
+          <div className="mt-2 mono text-[12px] leading-5 text-[color:var(--faint)] tabular">
+            {meta}
+          </div>
+
+          <div className="mt-3 hidden text-[12px] leading-5 text-[color:var(--muted)] group-hover:block group-focus-visible:block">
+            <span className="text-[color:var(--faint)]">Constraint:</span>{" "}
+            {kicker}
+          </div>
+        </div>
+
+        <div className="shrink-0 pt-[2px] text-[12px] text-[color:var(--faint)] group-hover:text-[color:var(--accent)]">
+          →
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function HomePage() {
   return (
     <Shell>
       <div className="py-14 md:py-16">
-        {/* Header */}
-        <header className="pt-2">
-          <div className="flex items-baseline justify-between gap-6">
-            <h1 className="text-[44px] md:text-[56px] leading-[0.98] tracking-[-0.04em]">
-              Benjamin Arce
-            </h1>
-
-            <nav className="hidden md:flex items-center gap-5 text-[12px] text-[color:var(--muted)]">
-              <Link className="hover:text-[color:var(--text)]" href="/work">
-                Work
-              </Link>
-              <Link className="hover:text-[color:var(--text)]" href="/notes">
-                Notes
-              </Link>
-              <Link className="hover:text-[color:var(--text)]" href="/contact">
-                Contact
-              </Link>
-            </nav>
+        {/* Top */}
+        <section>
+          <div className="text-[12px] uppercase tracking-[0.14em] text-[color:var(--faint)]">
+            Benjamin Arce
           </div>
 
-          <p className="mt-6 max-w-[68ch] text-[15px] leading-7 text-[color:var(--muted)]">
+          <h1 className="mt-3 display text-[42px] md:text-[56px] leading-[0.98] tracking-[-0.05em]">
             Builds systems that turn messy data into decisions.
-          </p>
+          </h1>
 
-          <p className="mt-2 text-[12px] text-[color:var(--faint)] tabular">
-            Status: open to internships • selective builds
-          </p>
-        </header>
+          <div className="mt-5 text-[12px] text-[color:var(--faint)]">
+            Status: open to internships <span className="mx-2">•</span> selective builds
+          </div>
+        </section>
 
         <div className="my-10 border-t hairline" />
 
-        {/* Selected */}
-        <section aria-labelledby="selected-builds">
-          <div className="flex items-end justify-between gap-6">
-            <h2
-              id="selected-builds"
-              className="text-[12px] uppercase tracking-[0.14em] text-[color:var(--faint)]"
-            >
+        {/* Selected Builds */}
+        <section>
+          <div className="flex items-end justify-between">
+            <h2 className="text-[12px] uppercase tracking-[0.14em] text-[color:var(--faint)]">
               Selected Builds
             </h2>
-
             <Link
               href="/work"
               className="text-[12px] text-[color:var(--muted)] hover:text-[color:var(--text)]"
@@ -127,16 +154,12 @@ export default function HomePage() {
 
         <div className="my-10 border-t hairline" />
 
-        {/* Notes */}
-        <section aria-labelledby="latest-notes">
-          <div className="flex items-end justify-between gap-6">
-            <h2
-              id="latest-notes"
-              className="text-[12px] uppercase tracking-[0.14em] text-[color:var(--faint)]"
-            >
+        {/* Latest Notes */}
+        <section>
+          <div className="flex items-end justify-between">
+            <h2 className="text-[12px] uppercase tracking-[0.14em] text-[color:var(--faint)]">
               Latest Notes
             </h2>
-
             <Link
               href="/notes"
               className="text-[12px] text-[color:var(--muted)] hover:text-[color:var(--text)]"
@@ -157,15 +180,15 @@ export default function HomePage() {
                     <div className="text-[16px] tracking-[-0.01em]">
                       {n.title}
                     </div>
-                    <div className="mt-2 text-[13px] leading-6 text-[color:var(--muted)] max-w-[72ch]">
+                    <div className="mt-2 text-[13px] leading-6 text-[color:var(--muted)] max-w-[80ch]">
                       {n.summary}
                     </div>
-                    <div className="mt-2 font-mono text-[12px] text-[color:var(--faint)] tabular">
+                    <div className="mt-2 mono text-[12px] text-[color:var(--faint)] tabular">
                       {n.meta}
                     </div>
                   </div>
 
-                  <div className="shrink-0 text-[12px] text-[color:var(--faint)] group-hover:text-[color:var(--accent)]">
+                  <div className="shrink-0 pt-[2px] text-[12px] text-[color:var(--faint)] group-hover:text-[color:var(--accent)]">
                     →
                   </div>
                 </div>
@@ -173,32 +196,6 @@ export default function HomePage() {
             ))}
           </div>
         </section>
-
-        {/* Footer micro-links */}
-        <footer className="mt-12 text-[12px] text-[color:var(--faint)]">
-          <div className="flex flex-wrap gap-x-4 gap-y-2">
-            <a className="hover:text-[color:var(--text)]" href="mailto:arceb3013@gmail.com">
-              Email
-            </a>
-            <a
-              className="hover:text-[color:var(--text)]"
-              href="https://www.linkedin.com/in/arcebenjamin/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>
-            <a
-              className="hover:text-[color:var(--text)]"
-              href="https://github.com/benjaminarce-cloud"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-            <span>Proof over pitch.</span>
-          </div>
-        </footer>
       </div>
     </Shell>
   );
