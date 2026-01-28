@@ -71,17 +71,14 @@ function Row({
   kicker: string;
 }) {
   return (
-    <Link
-      href={href}
-      className="group block border-b hairline py-6 md:py-7"
-    >
+    <Link href={href} className="group block border-b hairline py-6 md:py-7">
       <div className="flex items-start justify-between gap-6">
         <div className="min-w-0">
           <div className="text-[18px] md:text-[19px] tracking-[-0.02em]">
             {title}
           </div>
 
-          <div className="mt-1 text-[13px] md:text-[13.5px] leading-6 text-[color:var(--muted)] max-w-[80ch]">
+          <div className="mt-1 text-[13px] md:text-[13.5px] leading-6 text-[color:var(--muted)] max-w-[82ch]">
             {hook}
           </div>
 
@@ -113,12 +110,22 @@ export default function HomePage() {
             Benjamin Arce
           </div>
 
-          <h1 className="mt-3 display text-[42px] md:text-[56px] leading-[0.98] tracking-[-0.05em]">
+          <h1 className="mt-3 display text-[40px] md:text-[50px] leading-[0.98] tracking-[-0.05em] max-w-[22ch]">
             Builds systems that turn messy data into decisions.
           </h1>
 
           <div className="mt-5 text-[12px] text-[color:var(--faint)]">
             Status: open to internships <span className="mx-2">•</span> selective builds
+          </div>
+
+          {/* Signal strip */}
+          <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[12px] text-[color:var(--muted)]">
+            <span className="mono text-[color:var(--faint)]">Focus</span>
+            <span>data pipelines</span>
+            <span>optimization</span>
+            <span>decision systems</span>
+            <span className="mono text-[color:var(--faint)]">Proof</span>
+            <span>shipping tools people actually use</span>
           </div>
         </section>
 
@@ -180,7 +187,7 @@ export default function HomePage() {
                     <div className="text-[16px] tracking-[-0.01em]">
                       {n.title}
                     </div>
-                    <div className="mt-2 text-[13px] leading-6 text-[color:var(--muted)] max-w-[80ch]">
+                    <div className="mt-2 text-[13px] leading-6 text-[color:var(--muted)] max-w-[82ch]">
                       {n.summary}
                     </div>
                     <div className="mt-2 mono text-[12px] text-[color:var(--faint)] tabular">
