@@ -17,6 +17,14 @@
   --accentSoft: rgba(29, 75, 58, 0.35);
 }
 
+.prose { color: var(--text); }
+.prose :where(p) { color: var(--muted); line-height: 1.7; }
+.prose :where(h2,h3) { color: var(--text); letter-spacing: -0.01em; }
+.prose :where(strong) { color: var(--text); }
+.prose :where(ul) { color: var(--muted); }
+.prose :where(code) { color: var(--text); background: rgba(255,255,255,0.06); padding: 0.15rem 0.35rem; border-radius: 6px; }
+.prose :where(hr) { border-color: var(--hairline); }
+
 html, body { height: 100%; }
 
 body {
