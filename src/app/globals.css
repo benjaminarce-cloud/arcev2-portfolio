@@ -57,6 +57,23 @@ a:focus-visible {
   border-radius: 10px;
 }
 
+/* Make links inherit color and only show underline on hover/focus */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(255,255,255,0.28);
+}
+a:focus-visible {
+  outline: 2px solid rgba(124, 44, 58, 0.9); /* burgundy */
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 .tux-grain {
   position: fixed;
   inset: 0;
