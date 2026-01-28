@@ -3,72 +3,81 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const ROOT = process.cwd();
+const PROJECTS_DIR = path.join(ROOT, "src/content/projects");
+const NOTES_DIR = path.join(ROOT, "src/content/notes");
 
-function readDir(dir: string) {
-  return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx"));
-}
-
-export type ProjectFrontmatter = {
+export type Project = {
   slug: string;
   title: string;
   hook: string;
-  stack: string;
+  stack: string[];
   scale: string;
   result: string;
   time: string;
-  chips: string[];
-  tags?: string[];
+  kpis: string[];
+  status: "shipped" | "in-progress" | "draft";
   featured?: boolean;
-  constraint?: string;
+  content: string; // mdx body
 };
 
-export type NoteFrontmatter = {
+export type Note = {
   slug: string;
   title: string;
   summary: string;
   date: string; // YYYY-MM-DD
   tags: string[];
+  content: string;
 };
 
-export function getProjects() {
-  const dir = path.join(ROOT, "content/projects");
-  const files = readDir(dir);
-
-  const items = files.map((file) => {
-    const raw = fs.readFileSync(path.join(dir, file), "utf8");
-    const { data, content } = matter(raw);
-    return { frontmatter: data as ProjectFrontmatter, content };
-  });
-
-  return items.sort((a, b) => Number(!!b.frontmatter.featured) - Number(!!a.frontmatter.featured));
+function readMdxDir(dir: string) {
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((file) => {
+      const full = path.join(dir, file);
+      const raw = fs.readFileSync(full, "utf8");
+      const parsed = matter(raw);
+      return { file, data: parsed.data, content: parsed.content };
+    });
 }
 
-export function getProjectBySlug(slug: string) {
-  const dir = path.join(ROOT, "content/projects");
-  const file = path.join(dir, `${slug}.mdx`);
-  const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw);
-  return { frontmatter: data as ProjectFrontmatter, content };
+export function getProjects(): Project[] {
+  const rows = readMdxDir(PROJECTS_DIR).map(({ data, content }) => ({
+    slug: String(data.slug),
+    title: String(data.title),
+    hook: String(data.hook),
+    stack: (data.stack ?? []) as string[],
+    scale: String(data.scale),
+    result: String(data.result),
+    time: String(data.time),
+    kpis: (data.kpis ?? []) as string[],
+    status: String(data.status) as Project["status"],
+    featured: Boolean(data.featured),
+    content,
+  }));
+
+  // featured first, then alphabetical (or later we can add ordering)
+  return rows.sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || a.title.localeCompare(b.title));
 }
 
-export function getNotes() {
-  const dir = path.join(ROOT, "content/notes");
-  const files = readDir(dir);
+export function getProject(slug: string): Project | null {
+  return getProjects().find((p) => p.slug === slug) ?? null;
+}
 
-  const items = files.map((file) => {
-    const raw = fs.readFileSync(path.join(dir, file), "utf8");
-    const { data, content } = matter(raw);
-    return { frontmatter: data as NoteFrontmatter, content };
-  });
+export function getNotes(): Note[] {
+  const rows = readMdxDir(NOTES_DIR).map(({ data, content }) => ({
+    slug: String(data.slug),
+    title: String(data.title),
+    summary: String(data.summary),
+    date: String(data.date),
+    tags: (data.tags ?? []) as string[],
+    content,
+  }));
 
   // newest first
-  return items.sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1));
+  return rows.sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getNoteBySlug(slug: string) {
-  const dir = path.join(ROOT, "content/notes");
-  const file = path.join(dir, `${slug}.mdx`);
-  const raw = fs.readFileSync(file, "utf8");
-  const { data, content } = matter(raw);
-  return { frontmatter: data as NoteFrontmatter, content };
+export function getNote(slug: string): Note | null {
+  return getNotes().find((n) => n.slug === slug) ?? null;
 }
