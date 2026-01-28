@@ -95,3 +95,18 @@ a:focus-visible{
   border-radius: 6px;
 }
 .prose :where(hr) { border-color: var(--hair); }
+
+/* Make the room feel calmer: consistent type smoothing + selection */
+::selection{
+  background: rgba(124,44,58,0.35);
+}
+
+/* Subtle default for separators */
+hr, .rule{
+  border-color: var(--hair);
+}
+
+/* Keep the serif from feeling chunky */
+.display{
+  font-feature-settings: "kern" 1, "liga" 1, "clig" 1;
+}
