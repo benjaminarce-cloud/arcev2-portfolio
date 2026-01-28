@@ -7,11 +7,17 @@ export function SiteHeader() {
         <Link href="/" className="text-[14px] sm:text-[15px] tracking-[0.02em]">
           Benjamin Arce
         </Link>
-        <nav className="flex items-center gap-4 sm:gap-5 text-[12px] sm:text-[13px] text-[color:var(--muted)]">
-          <Link href="/work" className="hover:text-[color:var(--text)]">Work</Link>
-          <Link href="/notes" className="hover:text-[color:var(--text)]">Notes</Link>
-          <Link href="/contact" className="hover:text-[color:var(--text)]">Contact</Link>
-        </nav>
+       <nav className="flex items-center gap-4 sm:gap-5 text-[12px] sm:text-[13px] text-[color:var(--muted)]">
+  <Link href="/work" className="hover:text-[color:var(--text)] hover:underline underline-offset-4 decoration-[color:var(--hairline)]">
+    Work
+  </Link>
+  <Link href="/notes" className="hover:text-[color:var(--text)] hover:underline underline-offset-4 decoration-[color:var(--hairline)]">
+    Notes
+  </Link>
+  <Link href="/contact" className="hover:text-[color:var(--text)] hover:underline underline-offset-4 decoration-[color:var(--hairline)]">
+    Contact
+  </Link>
+</nav>
       </div>
     </header>
   );
