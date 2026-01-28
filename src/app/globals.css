@@ -7,12 +7,11 @@
   --surface: #121416;
   --surface2: #161a1d;
 
-  --text: #e8e2d6;
-  --muted: #b8b0a3;
-  --faint: #8c857a;
-
-  --hairline: rgba(232, 226, 214, 0.08);
-  --divider: rgba(232, 226, 214, 0.12);
+   --text: #f0eadf;        /* slightly brighter */
+  --muted: #c3bbaf;       /* lift muted */
+  --faint: #9a9287;       /* lift faint */
+  --hairline: rgba(240,234,223,0.08);
+  --divider: rgba(240,234,223,0.14);
 
   /* Accent: bottle green */
   --accent: #1d4b3a;
