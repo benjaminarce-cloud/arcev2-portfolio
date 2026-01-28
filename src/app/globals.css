@@ -1,26 +1,85 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0e0f10;
+  --surface: #121416;
+  --surface2: #161a1d;
+
+  --text: #e8e2d6;
+  --muted: #b8b0a3;
+  --faint: #8c857a;
+
+  --hairline: rgba(232, 226, 214, 0.08);
+  --divider: rgba(232, 226, 214, 0.12);
+
+  /* Accent: bottle green */
+  --accent: #1d4b3a;
+  --accentSoft: rgba(29, 75, 58, 0.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html, body { height: 100%; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+.tux-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 800px at 40% 20%, rgba(255,255,255,0.035), transparent 55%),
+    radial-gradient(900px 650px at 70% 60%, rgba(255,255,255,0.02), transparent 60%),
+    radial-gradient(1400px 1100px at 50% 50%, transparent 55%, rgba(0,0,0,0.55) 100%);
+}
+
+.tux-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
+}
+
+.hairline { border-color: var(--hairline); }
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible {
+  outline: 1px solid rgba(29, 75, 58, 0.55);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Dense, non-blog MDX */
+.prose-tux {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+.prose-tux h2 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: var(--text);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.prose-tux h3 {
+  margin-top: 22px;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 13px;
+  letter-spacing: -0.01em;
+}
+.prose-tux p { margin: 10px 0; }
+.prose-tux ul { margin: 10px 0; padding-left: 18px; }
+.prose-tux li { margin: 6px 0; }
+.prose-tux strong { color: var(--text); font-weight: 600; }
+.prose-tux details > summary::-webkit-details-marker { display: none; }
