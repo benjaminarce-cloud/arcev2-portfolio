@@ -23,7 +23,7 @@ export default function HomePage() {
   return (
     <div className="py-12">
       <section>
-        <h1 className="text-[44px] leading-[1.05] tracking-[-0.03em]">
+        <h1 className="text-[40px] leading-[1.05] tracking-[-0.03em]">1
           Benjamin Arce
         </h1>
         <p className="mt-4 max-w-[70ch] text-[15px] leading-6 text-[color:var(--muted)]">
@@ -38,7 +38,7 @@ export default function HomePage() {
 
       <section>
         <div className="flex items-end justify-between">
-          <h2 className="text-[18px] tracking-[-0.01em]">Selected Builds</h2>
+         <h2 className="text-[13px] uppercase tracking-[0.12em] text-[color:var(--faint)]">
           <Link
             href="/work"
             className="text-[12px] text-[color:var(--muted)] hover:text-[color:var(--text)]"
