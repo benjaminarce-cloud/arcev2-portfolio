@@ -2,29 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* -----------------------------
-   Theme A: Tux Bar Dark
------------------------------- */
 :root{
   --bg: #0b0d10;         /* smoked charcoal */
   --bg2:#07090b;
   --text: #e7e1d7;       /* warm off-white */
   --muted:#b8b0a3;
   --faint:#8a8176;
+
   --hair: rgba(231,225,215,0.10);
   --hair2: rgba(231,225,215,0.06);
+
   --accent:#7c2c3a;      /* muted burgundy */
 }
 
 html, body { height: 100%; }
 
 body{
-  margin: 0;
   color: var(--text);
   background:
-    radial-gradient(1200px 900px at 42% 12%, rgba(255,255,255,0.05), transparent 62%),
-    radial-gradient(900px 700px at 78% 52%, rgba(255,255,255,0.035), transparent 60%),
-    radial-gradient(1600px 1200px at 50% 50%, rgba(0,0,0,0.0) 58%, rgba(0,0,0,0.55) 100%),
+    radial-gradient(1200px 700px at 50% 18%, rgba(255,255,255,0.08), transparent 60%),
+    radial-gradient(1000px 800px at 70% 40%, rgba(255,255,255,0.05), transparent 62%),
     linear-gradient(180deg, var(--bg), var(--bg2));
   font-family: var(--font-sans), system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   letter-spacing: -0.01em;
@@ -33,19 +30,18 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* subtle grain (quiet, always on) */
+/* quiet grain */
 body::before{
   content:"";
   position: fixed;
   inset:0;
   pointer-events:none;
-  opacity:0.06;
+  opacity:0.07;
   mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
 }
 
-/* Links: quiet by default, underline only on intent */
-a{ color: inherit; text-decoration: none; }
+a{ color:inherit; text-decoration:none; }
 a:hover{
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -53,31 +49,45 @@ a:hover{
   text-decoration-color: rgba(231,225,215,0.28);
 }
 a:focus-visible{
-  outline: 2px solid rgba(124,44,58,0.92);
+  outline: 2px solid rgba(124, 44, 58, 0.92);
   outline-offset: 3px;
   border-radius: 8px;
 }
 
-/* Hairlines */
+/* utilities */
 .hairline{ border-color: var(--hair); }
 .hairline2{ border-color: var(--hair2); }
 
-/* Typography helpers */
 .display{
   font-family: var(--font-display), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   letter-spacing: -0.02em;
 }
+
 .mono{
   font-family: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   letter-spacing: -0.01em;
 }
 
-/* Prose (MDX / long-form) */
+/* tiny chips / meta */
+.tabular{ font-variant-numeric: tabular-nums; }
+
+/* “tux room” vignette layer (optional) */
+.tux-vignette{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 900px at 40% 15%, rgba(255,255,255,0.020), transparent 62%),
+    radial-gradient(900px 700px at 78% 55%, rgba(255,255,255,0.012), transparent 60%),
+    radial-gradient(1600px 1200px at 50% 50%, rgba(0,0,0,0.0) 58%, rgba(0,0,0,0.52) 100%);
+}
+
+/* prose (MDX) */
 .prose { color: var(--text); }
-.prose :where(p) { color: var(--muted); line-height: 1.75; }
-.prose :where(h1,h2,h3) { color: var(--text); letter-spacing: -0.02em; }
+.prose :where(p) { color: var(--muted); line-height: 1.72; }
+.prose :where(h2,h3) { color: var(--text); letter-spacing: -0.01em; }
 .prose :where(strong) { color: var(--text); }
-.prose :where(ul,ol) { color: var(--muted); }
+.prose :where(ul) { color: var(--muted); }
 .prose :where(code) {
   color: var(--text);
   background: rgba(255,255,255,0.06);
@@ -85,8 +95,3 @@ a:focus-visible{
   border-radius: 6px;
 }
 .prose :where(hr) { border-color: var(--hair); }
-
-/* Selection = tiny burgundy flex */
-::selection{
-  background: rgba(124,44,58,0.35);
-}
