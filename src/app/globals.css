@@ -69,3 +69,11 @@ a:focus-visible{ outline:2px solid rgba(124,44,58,0.95); outline-offset:3px; bor
 .prose :where(ul) { color: var(--muted); }
 .prose :where(code) { color: var(--text); background: rgba(255,255,255,0.06); padding: 0.15rem 0.35rem; border-radius: 6px; }
 .prose :where(hr) { border-color: var(--hair); }
+
+body {
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
