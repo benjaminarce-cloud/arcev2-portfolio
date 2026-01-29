@@ -64,102 +64,36 @@ const logs = [
 
 export default function NotesPage() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "var(--bg)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: 720,
-          margin: "0 auto",
-          padding: "0 32px",
-        }}
-      >
+    <div className="min-h-screen bg-[var(--bg)]">
+      <div className="max-w-[720px] mx-auto px-8">
         {/* Header */}
-        <header
-          style={{
-            paddingTop: 40,
-            paddingBottom: 40,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderBottom: "1px solid var(--hair)",
-          }}
-        >
+        <header className="pt-10 pb-10 flex items-center justify-between border-b border-[var(--hair)]">
           <Link
             href="/"
-            style={{
-              fontSize: 15,
-              fontWeight: 500,
-              color: "var(--text)",
-              letterSpacing: "-0.01em",
-            }}
+            className="text-[15px] font-medium text-[var(--text)] tracking-[-0.01em]"
           >
             Benjamin Arce
           </Link>
 
-          <nav style={{ display: "flex", alignItems: "center", gap: 32 }}>
-            <Link
-              href="/work"
-              style={{
-                fontSize: 14,
-                color: "var(--muted)",
-                transition: "color 0.15s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
-            >
+          <nav className="flex items-center gap-8">
+            <Link href="/work" className="nav-link">
               Work
             </Link>
-            <Link
-              href="/notes"
-              style={{
-                fontSize: 14,
-                color: "var(--text)",
-                fontWeight: 500,
-              }}
-            >
+            <Link href="/notes" className="nav-link-active">
               Notes
             </Link>
-            <Link
-              href="/about"
-              style={{
-                fontSize: 14,
-                color: "var(--muted)",
-                transition: "color 0.15s ease",
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
-            >
+            <Link href="/about" className="nav-link">
               About
             </Link>
           </nav>
         </header>
 
         {/* Intro */}
-        <section style={{ paddingTop: 64, paddingBottom: 48, borderBottom: "1px solid var(--hair)" }}>
-          <h1
-            style={{
-              fontSize: 28,
-              fontWeight: 600,
-              letterSpacing: "-0.02em",
-              color: "var(--text)",
-              margin: 0,
-              marginBottom: 16,
-            }}
-          >
+        <section className="pt-16 pb-12 border-b border-[var(--hair)]">
+          <h1 className="text-[28px] font-semibold tracking-[-0.02em] text-[var(--text)] mb-4">
             Log
           </h1>
-          <p
-            style={{
-              fontSize: 16,
-              lineHeight: 1.7,
-              color: "var(--muted)",
-              maxWidth: "56ch",
-            }}
-          >
+          <p className="text-[16px] leading-[1.7] text-[var(--muted)] max-w-[56ch]">
             This isn't a polished blog. It's more like a changelog of what I'm
             actually working on: research, side projects, and the occasional "I
             finally wired this thing correctly" moment.
@@ -167,52 +101,26 @@ export default function NotesPage() {
         </section>
 
         {/* Entries */}
-        <main style={{ paddingTop: 48, paddingBottom: 120 }}>
+        <main className="pt-12 pb-32">
           {logs.map((log, i) => (
             <article
               key={i}
-              style={{
-                paddingBottom: 48,
-                marginBottom: 48,
-                borderBottom: i < logs.length - 1 ? "1px solid var(--hair)" : "none",
-              }}
+              className={`pb-12 mb-12 ${
+                i < logs.length - 1 ? "border-b border-[var(--hair)]" : ""
+              }`}
             >
-              <div
-                style={{
-                  fontSize: 13,
-                  color: "var(--faint)",
-                  marginBottom: 12,
-                  display: "flex",
-                  gap: 12,
-                  alignItems: "center",
-                }}
-              >
+              <div className="text-[13px] text-[var(--faint)] mb-3 flex gap-3 items-center">
                 <span>{log.date}</span>
-                <span style={{ color: "var(--hair)" }}>·</span>
+                <span className="text-[var(--hair)]">·</span>
                 <span>{log.tags.join(", ")}</span>
               </div>
-              <h2
-                style={{
-                  fontSize: 20,
-                  fontWeight: 600,
-                  lineHeight: 1.3,
-                  color: "var(--text)",
-                  margin: 0,
-                  marginBottom: 16,
-                  letterSpacing: "-0.01em",
-                }}
-              >
+              <h2 className="text-[20px] font-semibold leading-[1.3] text-[var(--text)] mb-4 tracking-[-0.01em]">
                 {log.title}
               </h2>
               {log.content.map((p, j) => (
                 <p
                   key={j}
-                  style={{
-                    fontSize: 16,
-                    lineHeight: 1.7,
-                    color: "var(--muted)",
-                    marginBottom: 12,
-                  }}
+                  className="text-[16px] leading-[1.7] text-[var(--muted)] mb-3"
                 >
                   {p}
                 </p>
