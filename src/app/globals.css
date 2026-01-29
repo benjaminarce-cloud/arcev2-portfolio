@@ -34,10 +34,57 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: none;
-}
-
 ::selection {
   background: rgba(196, 90, 59, 0.15);
+}
+
+/* Navigation links */
+.nav-link {
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.nav-link:hover {
+  color: var(--text);
+}
+
+.nav-link-active {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* Social icons */
+.social-link {
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.social-link:hover {
+  color: var(--text);
+}
+
+/* Project cards */
+.project-link {
+  display: block;
+}
+
+.project-link:hover .project-title {
+  color: var(--accent);
+}
+
+.project-title {
+  transition: color 0.15s ease;
+}
+
+/* Back link */
+.back-link {
+  font-size: 14px;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--text);
 }
