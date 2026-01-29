@@ -75,7 +75,7 @@ export default function NotesPage() {
             Benjamin Arce
           </Link>
 
-          <nav className="flex items-center gap-8">
+          <nav className="nav-container">
             <Link href="/work" className="nav-link">
               Work
             </Link>
