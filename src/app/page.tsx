@@ -35,15 +35,12 @@ export default function HomePage() {
         <header className="pt-10 pb-10 flex items-center justify-between border-b border-[var(--hair)]">
           <Link
             href="/"
-            className="text-[15px] font-medium text-[var(--text)] tracking-[-0.01em]"
+            className="text-[20px] font-semibold text-[var(--text)] tracking-[-0.02em]"
           >
             Benjamin Arce
           </Link>
 
           <nav className="nav-container">
-            <Link href="/work" className="nav-link">
-              Work
-            </Link>
             <Link href="/notes" className="nav-link">
               Notes
             </Link>
