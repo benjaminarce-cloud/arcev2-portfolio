@@ -29,43 +29,74 @@ const projects = [
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen px-6 md:px-16 max-w-[900px] mx-auto">
+    <div style={{ minHeight: "100vh", padding: "0 64px", maxWidth: 900, margin: "0 auto" }}>
       {/* Header */}
-      <header className="pt-12 pb-24 flex items-baseline justify-between">
+      <header style={{ 
+        paddingTop: 48, 
+        paddingBottom: 96, 
+        display: "flex", 
+        alignItems: "baseline", 
+        justifyContent: "space-between" 
+      }}>
         <Link 
           href="/" 
-          className="text-[14px] tracking-[0.12em] uppercase text-[var(--text)]"
+          style={{ 
+            fontSize: 14, 
+            letterSpacing: "0.12em", 
+            textTransform: "uppercase",
+            color: "var(--text)"
+          }}
         >
           Benjamin Arce
         </Link>
         
-        <nav className="flex items-baseline gap-8">
+        <nav style={{ display: "flex", alignItems: "baseline", gap: 32 }}>
           <Link 
             href="/work" 
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+            style={{ 
+              fontSize: 13, 
+              letterSpacing: "0.08em", 
+              textTransform: "uppercase",
+              color: "var(--muted)"
+            }}
           >
             Work
           </Link>
           <Link 
             href="/notes" 
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+            style={{ 
+              fontSize: 13, 
+              letterSpacing: "0.08em", 
+              textTransform: "uppercase",
+              color: "var(--muted)"
+            }}
           >
             Notes
           </Link>
           <Link 
             href="/about" 
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+            style={{ 
+              fontSize: 13, 
+              letterSpacing: "0.08em", 
+              textTransform: "uppercase",
+              color: "var(--muted)"
+            }}
           >
             About
           </Link>
         </nav>
         
-        <div className="flex items-baseline gap-6">
+        <div style={{ display: "flex", alignItems: "baseline", gap: 24 }}>
           <a 
             href="https://github.com/benjaminarce" 
             target="_blank" 
             rel="noreferrer" 
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+            style={{ 
+              fontSize: 13, 
+              letterSpacing: "0.08em", 
+              textTransform: "uppercase",
+              color: "var(--muted)"
+            }}
           >
             GH
           </a>
@@ -73,7 +104,12 @@ export default function HomePage() {
             href="https://linkedin.com/in/benjaminarce" 
             target="_blank" 
             rel="noreferrer" 
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
+            style={{ 
+              fontSize: 13, 
+              letterSpacing: "0.08em", 
+              textTransform: "uppercase",
+              color: "var(--muted)"
+            }}
           >
             LI
           </a>
@@ -81,23 +117,43 @@ export default function HomePage() {
       </header>
 
       {/* Work List */}
-      <main className="pb-24">
+      <main style={{ paddingBottom: 96 }}>
         {projects.map((project) => (
           <Link
             key={project.slug}
             href={`/work/${project.slug}`}
-            className="group block mb-16 last:mb-0"
+            style={{ display: "block", marginBottom: 64 }}
           >
-            <div className="flex justify-between items-start gap-8">
-              <div className="flex-1">
-                <h2 className="font-serif italic text-[32px] leading-[1.2] tracking-[-0.02em] text-[var(--text)] group-hover:text-white transition-colors">
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 32 }}>
+              <div style={{ flex: 1 }}>
+                <h2 style={{ 
+                  fontFamily: "var(--font-serif)", 
+                  fontStyle: "italic",
+                  fontSize: 32, 
+                  lineHeight: 1.2, 
+                  letterSpacing: "-0.02em",
+                  color: "var(--text)",
+                  margin: 0
+                }}>
                   {project.title}
                 </h2>
-                <p className="mt-3 text-[15px] leading-[1.6] text-[var(--muted)] max-w-[54ch]">
+                <p style={{ 
+                  marginTop: 12, 
+                  fontSize: 15, 
+                  lineHeight: 1.6, 
+                  color: "var(--muted)",
+                  maxWidth: "54ch"
+                }}>
                   {project.description}
                 </p>
               </div>
-              <span className="text-[13px] tabular-nums text-[var(--faint)] pt-2 shrink-0">
+              <span style={{ 
+                fontSize: 13, 
+                fontVariantNumeric: "tabular-nums",
+                color: "var(--faint)",
+                paddingTop: 8,
+                flexShrink: 0
+              }}>
                 {project.date}
               </span>
             </div>
