@@ -1,131 +1,128 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const logs = [
-  {
-    slug: "this-site",
+type NoteData = {
+  title: string;
+  date: string;
+  tags: string[];
+  content: string[];
+};
+
+const notes: Record<string, NoteData> = {
+  "this-site": {
     title: "This site: turning a portfolio into something honest and alive",
-    description: "Built on Next.js + Vercel, not as a glossy brochure, but as a place to be honest about what broke and what I'm learning.",
     date: "Dec 27, 2025",
     tags: ["meta", "portfolio", "vercel"],
+    content: [
+      "Built this site on Next.js + Vercel, not as a glossy brochure, but as a place to be honest about projects, what broke, and what I'm learning.",
+      "Big recurring confusion: Vercel vs GitHub vs my brain. More than once I was clicking 'Visit' on an old deployment and assuming the code hadn't updated, when in reality I was just on a stale URL.",
+      "Ran into weird 'not reflecting' moments that ended up being MDX issues: a couple of characters and math-y formatting broke the content build, so Vercel silently rolled back. Learned to keep MDX clean and watch the build logs instead of assuming it's magic.",
+      "Had to get comfortable with the 'projects as conversations' tone: these pages are not pitch decks. They're me talking through what I tried, what worked, what was ugly, and then giving a technical appendix for people who care about the plumbing.",
+      "The Log you're reading now exists because I didn't want a dead portfolio. This is the running timeline of how the Cross-Border optimizer, the manufacturing system, the thesis, the dashboard, and this very site evolved.",
+    ],
   },
-  {
-    slug: "latam-dashboard",
+  "latam-dashboard": {
     title: "LATAM Inventory Health Dashboard finally stops breaking",
-    description: "Power BI dashboard comparing safety stock vs on-hand stock. The team now talks in 'reds' and 'yellows' instead of screenshotting spreadsheets.",
     date: "Dec 05, 2025",
     tags: ["powerbi", "supply-chain", "automation"],
+    content: [
+      "Built a Power BI dashboard for the LATAM supply chain team that compares safety stock vs on-hand stock and classifies each material–country pair as green / yellow / red.",
+      "Redid the Power BI model multiple times after the DAX logic turned into spaghetti. At one point, every new measure felt like a patch on top of another patch.",
+      "Ran into a nasty issue where different Incorta reports used slightly different material codes, so the joins silently failed and comparisons made no sense. Had to design a 'family' mapping to reconcile codes with formats like ***-***-*** vs ***-**.",
+      "The planning for the material-code mapping was not glamorous: lots of manual checking, pattern spotting, and making sure a single bad slash didn't break the lookup.",
+      "Power Automate turned out to be surprisingly fragile. Small changes in conditions or dynamic content broke the flow that takes the daily Incorta email and pushes files into SharePoint. Debugging was just: edit, wait for the next run, hope it doesn't silently die.",
+      "The payoff: the team now talks in terms of 'reds' and 'yellows' instead of screenshotting spreadsheets. That alone made the pain worth it.",
+    ],
   },
-  {
-    slug: "thesis-chokepoint",
+  "thesis-chokepoint": {
     title: "Thesis: from 'I want to do semiconductors' to a real chokepoint model",
-    description: "Locked in the CoWoS/HBM chokepoint as the core. Decided to bake my disagreement with the literature into the thesis.",
     date: "Nov 10, 2025",
     tags: ["thesis", "semiconductors", "research"],
+    content: [
+      "Locked in the CoWoS/HBM chokepoint as the core of the thesis and started turning frustration with the literature into a concrete tri-objective model.",
+      "Spent a lot of time stuck at the 'topic fog' stage: I knew I wanted semiconductors + resilience + climate, but everything sounded either too generic or too impossible to execute as a student.",
+      "Kept running into papers that ended with some version of 'firms should share more data and collaborate across the chain' as the big conclusion. It felt unrealistic for semiconductors and honestly lazy as a final recommendation.",
+      "The turning point was deciding to bake that disagreement into the thesis: assume no magical cross-firm data sharing, and focus on what a single firm can control at the CoWoS/HBM stage.",
+      "Started drafting the formal structure: sets, decision variables, tri-objective function (cost, resilience, carbon), and a simulation layer for disruption scenarios. The math itself is fine; the real curve has been understanding which modeling choices are honest vs just convenient.",
+    ],
   },
-  {
-    slug: "cost-intelligence",
+  "cost-intelligence": {
     title: "Manufacturing Cost Intelligence System becomes a real thinking tool",
-    description: "Flight simulator for manufacturing decisions. You can feel portfolio-level impact in a slider move.",
     date: "Jul 20, 2025",
     tags: ["manufacturing", "analytics", "streamlit"],
+    content: [
+      "Took the idea of 'flight simulator for manufacturing decisions' and pushed it far enough that you can actually feel portfolio-level impact in a slider move.",
+      "Built the first version of the P&L simulator that ties together BOM data, cost drivers, and a simple demand model. Streamlit made it easy to iterate, but it was very tempting to keep adding sliders with no structure.",
+      "Hit a wall when I mixed in too much logic directly into the UI. Refactored the whole thing so /app/core holds the real brain and Streamlit is just the face. That hurt for a day but made everything cleaner.",
+      "Prompt engineering for the AI 'strategist' took several tries. Early versions just rephrased charts ('costs increased because inputs increased'). I had to explicitly feed feasibility scores and tell it what not to say to get something that sounded like a junior consultant instead of a narrator.",
+      "Learned the hard way that static CSVs are both a blessing and a limitation: great for controlled experiments, bad if you pretend it's production-ready. Accepted that this version is a thinking tool, not an ERP replacement.",
+    ],
   },
-  {
-    slug: "fleet-optimizer",
+  "fleet-optimizer": {
     title: "Cross-Border Fleet Optimizer actually starts working",
-    description: "First time the model chose a longer route in kilometers but cheaper in total cost. Stopped feeling like a school assignment.",
     date: "Jun 15, 2025",
     tags: ["logistics", "python", "optimization"],
+    content: [
+      "First real 'systems' project: turning a whiteboard-style Laredo dispatch problem into a Python tool that plans better routes than I would by hand.",
+      "Got the first version of the optimizer running with straight-line distances and basic capacity and time-window constraints. It worked on paper but felt fake for real logistics.",
+      "Biggest early headache: wrestling with OR-Tools' routing model. I kept wiring callbacks wrong and ended up with routes that technically 'solved' but made no real-world sense.",
+      "Hooked up a local OSRM container so Texas routes use real road travel times. That was a whole journey of Docker image pulls, port issues, and matching city coordinates so OSRM didn't just say 'no route'.",
+      "First time the model chose a longer route in kilometers but cheaper in total cost (driver time + fuel) was the moment it stopped feeling like a school assignment and more like a tiny real tool.",
+    ],
   },
-];
+};
 
-export default function NotesPage() {
+export default async function NotePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const note = notes[slug];
+
+  if (!note) {
+    notFound();
+  }
+
   return (
     <div className="min-h-screen bg-[var(--bg)]">
-      <div className="max-w-[1000px] mx-auto px-12">
-        {/* Header */}
-        <header className="pt-10 pb-10 flex items-center justify-between border-b border-[var(--hair)]">
-          <Link
-            href="/"
-            className="text-[20px] font-semibold text-[var(--text)] tracking-[-0.02em]"
-          >
-            Benjamin Arce
+      <div className="max-w-[720px] mx-auto px-8">
+        {/* Back link */}
+        <div className="pt-10 pb-16">
+          <Link href="/notes" className="back-link inline-flex items-center gap-1.5">
+            ← Back to Log
           </Link>
+        </div>
 
-          <nav className="nav-container">
-            <Link href="/notes" className="nav-link-active">
-              Notes
-            </Link>
-            <Link href="/about" className="nav-link">
-              About
-            </Link>
-          </nav>
-
-          <div className="social-container">
-            <a
-              href="https://github.com/benjaminarce-clouds"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="social-link"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/benjaminarce"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="social-link"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-          </div>
+        {/* Header */}
+        <header className="pb-12 border-b border-[var(--hair)]">
+          <p className="text-[14px] text-[var(--faint)] mb-2">
+            {note.date}
+          </p>
+          <h1 className="text-[32px] font-semibold tracking-[-0.02em] text-[var(--text)] leading-[1.2]">
+            {note.title}
+          </h1>
+          <p className="mt-4 text-[13px] text-[var(--faint)]">
+            {note.tags.join(", ")}
+          </p>
         </header>
 
-        {/* Intro */}
-        <section className="pt-16 pb-12 border-b border-[var(--hair)]">
-          <h1 className="text-[32px] font-semibold tracking-[-0.02em] text-[var(--text)] mb-4">
-            Log
-          </h1>
-          <p className="text-[16px] leading-[1.7] text-[var(--muted)] max-w-[56ch]">
-            This isn't a polished blog. It's a changelog of what I'm actually working on: research, side projects, and the occasional "I finally wired this thing correctly" moment.
-          </p>
-        </section>
-
-        {/* Entries - same style as work */}
+        {/* Content */}
         <main className="pt-12 pb-32">
-          {logs.map((log, index) => (
-            <Link
-              key={log.slug}
-              href={`/notes/${log.slug}`}
-              className={`project-link ${index === 0 ? "pt-0" : "pt-12"} pb-12 ${
-                index < logs.length - 1 ? "border-b border-[var(--hair)]" : ""
-              }`}
+          {note.content.map((p, i) => (
+            <p
+              key={i}
+              className="mb-6 text-[16px] leading-[1.8] text-[var(--muted)]"
             >
-              <article className="flex justify-between items-start gap-12">
-                <div className="flex-1">
-                  <h2 className="project-title text-[24px] font-semibold tracking-[-0.02em] text-[var(--text)] leading-[1.3]">
-                    {log.title}
-                  </h2>
-                  <p className="mt-3 text-[16px] leading-[1.6] text-[var(--muted)] max-w-[56ch]">
-                    {log.description}
-                  </p>
-                  <p className="mt-3 text-[13px] text-[var(--faint)]">
-                    {log.tags.join(", ")}
-                  </p>
-                </div>
-                <span className="text-[14px] text-[var(--faint)] flex-shrink-0 pt-1">
-                  {log.date}
-                </span>
-              </article>
-            </Link>
+              {p}
+            </p>
           ))}
         </main>
       </div>
     </div>
   );
+}
+
+export function generateStaticParams() {
+  return Object.keys(notes).map((slug) => ({ slug }));
 }
