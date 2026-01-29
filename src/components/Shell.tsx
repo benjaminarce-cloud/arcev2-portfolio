@@ -3,64 +3,25 @@ import Link from "next/link";
 export function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-dvh">
-      <div className="mx-auto w-full max-w-[1200px] px-6 md:px-10">
-        <div className="grid grid-cols-12 gap-x-10">
-          {/* Main stage */}
-          <main className="col-span-12 md:col-span-8">
-            {children}
-          </main>
-
-          {/* Right rail (desktop) */}
-          <aside className="hidden md:block md:col-span-4">
-            <div className="sticky top-10">
-              <div className="border-l hairline pl-6">
-                <div className="mono text-[11px] tracking-[0.18em] text-[color:var(--faint)]">
-                  NAV
-                </div>
-
-                <nav className="mt-6 flex flex-col gap-5">
-                  <Link className="display text-[22px] leading-[1.1] hover:no-underline" href="/work">
-                    Work
-                  </Link>
-                  <Link className="display text-[22px] leading-[1.1] hover:no-underline" href="/notes">
-                    Notes
-                  </Link>
-                  <Link className="display text-[22px] leading-[1.1] hover:no-underline" href="/contact">
-                    Contact
-                  </Link>
-                </nav>
-
-                <div className="mt-10 border-t hairline pt-8">
-                  <div className="mono text-[11px] tracking-[0.18em] text-[color:var(--faint)]">
-                    STATUS
-                  </div>
-                  <div className="mt-3 text-[12px] leading-5 text-[color:var(--muted)]">
-                    Open to internships. Selective builds.
-                  </div>
-                </div>
-
-                <div className="mt-10 border-t hairline pt-8">
-                  <div className="mono text-[11px] tracking-[0.18em] text-[color:var(--faint)]">
-                    LINKS
-                  </div>
-                  <div className="mt-4 flex flex-col gap-3 text-[12px] text-[color:var(--muted)]">
-                    <a href="mailto:arceb3013@gmail.com">Email</a>
-                    <a href="https://www.linkedin.com/in/arcebenjamin/" target="_blank" rel="noreferrer">
-                      LinkedIn
-                    </a>
-                    <a href="https://github.com/benjaminarce-cloud" target="_blank" rel="noreferrer">
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-
-                <div className="mt-10 border-t hairline pt-8 text-[11px] text-[color:var(--faint)] mono tabular">
-                  © {new Date().getFullYear()}
-                </div>
-              </div>
+      <div className="mx-auto w-full max-w-[1320px] px-8 md:px-14">
+        {/* Keep a subtle top rail like A24 */}
+        <div className="pt-10 md:pt-14">
+          <div className="flex items-center justify-between">
+            <div className="mono text-[11px] tracking-[0.22em] text-[color:var(--faint)]">
+              BENJAMIN ARCE
             </div>
-          </aside>
+            <div className="hidden sm:flex items-center gap-6 mono text-[11px] tracking-[0.22em] text-[color:var(--faint)]">
+              <Link href="/work" className="hover:text-[color:var(--text)]">WORK</Link>
+              <Link href="/notes" className="hover:text-[color:var(--text)]">NOTES</Link>
+              <Link href="/contact" className="hover:text-[color:var(--text)]">CONTACT</Link>
+            </div>
+          </div>
+
+          <div className="mt-6 border-t hairline" />
         </div>
+
+        {/* Stage */}
+        <main className="pb-24 md:pb-32">{children}</main>
       </div>
     </div>
   );
