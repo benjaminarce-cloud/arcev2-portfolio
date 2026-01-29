@@ -1,33 +1,44 @@
 import Link from "next/link";
 
-const projects = [
+const logs = [
   {
-    slug: "inbox-inventory-radar",
-    title: "Inbox → Inventory Radar",
-    description: "Daily export → live LATAM traffic-light view of stock risk.",
-    date: "2025-10",
+    slug: "this-site",
+    title: "This site: turning a portfolio into something honest and alive",
+    description: "Built on Next.js + Vercel, not as a glossy brochure, but as a place to be honest about what broke and what I'm learning.",
+    date: "Dec 27, 2025",
+    tags: ["meta", "portfolio", "vercel"],
   },
   {
-    slug: "chokepoint-frontier-model",
-    title: "Chokepoint Frontier Model",
-    description: "Tri-objective sim/opt mapping cost vs resilience vs carbon at CoWoS/HBM bottleneck.",
-    date: "2025-09",
+    slug: "latam-dashboard",
+    title: "LATAM Inventory Health Dashboard finally stops breaking",
+    description: "Power BI dashboard comparing safety stock vs on-hand stock. The team now talks in 'reds' and 'yellows' instead of screenshotting spreadsheets.",
+    date: "Dec 05, 2025",
+    tags: ["powerbi", "supply-chain", "automation"],
   },
   {
-    slug: "cost-flight-simulator",
-    title: "Cost Flight Simulator",
-    description: "What-if manufacturing P&L engine for margin impact in seconds.",
-    date: "2025-08",
+    slug: "thesis-chokepoint",
+    title: "Thesis: from 'I want to do semiconductors' to a real chokepoint model",
+    description: "Locked in the CoWoS/HBM chokepoint as the core. Decided to bake my disagreement with the literature into the thesis.",
+    date: "Nov 10, 2025",
+    tags: ["thesis", "semiconductors", "research"],
   },
   {
-    slug: "border-fleet-optimizer",
-    title: "Border Fleet Optimizer",
-    description: "CVRPTW cross-border day plan optimized for cost, not distance.",
-    date: "2025-07",
+    slug: "cost-intelligence",
+    title: "Manufacturing Cost Intelligence System becomes a real thinking tool",
+    description: "Flight simulator for manufacturing decisions. You can feel portfolio-level impact in a slider move.",
+    date: "Jul 20, 2025",
+    tags: ["manufacturing", "analytics", "streamlit"],
+  },
+  {
+    slug: "fleet-optimizer",
+    title: "Cross-Border Fleet Optimizer actually starts working",
+    description: "First time the model chose a longer route in kilometers but cheaper in total cost. Stopped feeling like a school assignment.",
+    date: "Jun 15, 2025",
+    tags: ["logistics", "python", "optimization"],
   },
 ];
 
-export default function HomePage() {
+export default function NotesPage() {
   return (
     <div className="min-h-screen bg-[var(--bg)]">
       <div className="max-w-[1000px] mx-auto px-12">
@@ -41,7 +52,7 @@ export default function HomePage() {
           </Link>
 
           <nav className="nav-container">
-            <Link href="/notes" className="nav-link">
+            <Link href="/notes" className="nav-link-active">
               Notes
             </Link>
             <Link href="/about" className="nav-link">
@@ -75,27 +86,40 @@ export default function HomePage() {
           </div>
         </header>
 
-        {/* Main content */}
-        <main className="pt-20 pb-32">
-          {projects.map((project, index) => (
+        {/* Intro */}
+        <section className="pt-16 pb-12 border-b border-[var(--hair)]">
+          <h1 className="text-[32px] font-semibold tracking-[-0.02em] text-[var(--text)] mb-4">
+            Log
+          </h1>
+          <p className="text-[16px] leading-[1.7] text-[var(--muted)] max-w-[56ch]">
+            This isn't a polished blog. It's a changelog of what I'm actually working on: research, side projects, and the occasional "I finally wired this thing correctly" moment.
+          </p>
+        </section>
+
+        {/* Entries - same style as work */}
+        <main className="pt-12 pb-32">
+          {logs.map((log, index) => (
             <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
+              key={log.slug}
+              href={`/notes/${log.slug}`}
               className={`project-link ${index === 0 ? "pt-0" : "pt-12"} pb-12 ${
-                index < projects.length - 1 ? "border-b border-[var(--hair)]" : ""
+                index < logs.length - 1 ? "border-b border-[var(--hair)]" : ""
               }`}
             >
               <article className="flex justify-between items-start gap-12">
                 <div className="flex-1">
                   <h2 className="project-title text-[24px] font-semibold tracking-[-0.02em] text-[var(--text)] leading-[1.3]">
-                    {project.title}
+                    {log.title}
                   </h2>
                   <p className="mt-3 text-[16px] leading-[1.6] text-[var(--muted)] max-w-[56ch]">
-                    {project.description}
+                    {log.description}
+                  </p>
+                  <p className="mt-3 text-[13px] text-[var(--faint)]">
+                    {log.tags.join(", ")}
                   </p>
                 </div>
-                <span className="text-[14px] text-[var(--faint)] tabular-nums flex-shrink-0 pt-1">
-                  {project.date}
+                <span className="text-[14px] text-[var(--faint)] flex-shrink-0 pt-1">
+                  {log.date}
                 </span>
               </article>
             </Link>
