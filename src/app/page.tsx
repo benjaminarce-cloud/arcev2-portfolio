@@ -40,7 +40,7 @@ export default function HomePage() {
             Benjamin Arce
           </Link>
 
-          <nav className="flex items-center gap-8">
+          <nav className="nav-container">
             <Link href="/work" className="nav-link">
               Work
             </Link>
@@ -52,7 +52,7 @@ export default function HomePage() {
             </Link>
           </nav>
 
-          <div className="flex items-center gap-5">
+          <div className="social-container">
             <a
               href="https://github.com/benjaminarce-clouds"
               target="_blank"
