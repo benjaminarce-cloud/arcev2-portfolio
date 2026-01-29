@@ -40,27 +40,18 @@ export default function HomePage() {
           Benjamin Arce
         </Link>
 
-        <nav className="flex items-baseline gap-8">
-          <Link
-            href="/work"
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-          >
-            Work
-          </Link>
-          <Link
-            href="/notes"
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-          >
-            Notes
-          </Link>
-          <Link
-            href="/about"
-            className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors"
-          >
-            About
-          </Link>
-        </nav>
-
+       <nav className="flex items-baseline gap-8">
+  <Link href="/work" className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+    Work
+  </Link>
+  <Link href="/notes" className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+    Notes
+  </Link>
+  <Link href="/about" className="text-[13px] tracking-[0.08em] uppercase text-[var(--muted)] hover:text-[var(--text)] transition-colors">
+    About
+  </Link>
+</nav>
+        
         <div className="flex items-baseline gap-6">
           <a
             href="https://github.com/benjaminarce"
