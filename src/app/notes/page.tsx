@@ -1,130 +1,62 @@
+// src/app/notes/page.tsx
 import Link from "next/link";
 
-const logs = [
+type NoteRow = {
+  slug: string;
+  title: string;
+  desc: string;
+  date: string; // YYYY-MM-DD or YYYY-MM
+};
+
+const NOTES: NoteRow[] = [
   {
-    slug: "this-site",
+    slug: "site-honest-and-alive",
     title: "This site: turning a portfolio into something honest and alive",
-    description: "Built on Next.js + Vercel, not as a glossy brochure, but as a place to be honest about what broke and what I'm learning.",
-    date: "Dec 27, 2025",
-    tags: ["meta", "portfolio", "vercel"],
+    desc: "Built on Next.js + Vercel as a changelog of real work, not a glossy brochure.",
+    date: "2025-12-27",
   },
   {
-    slug: "latam-dashboard",
+    slug: "latam-inventory-dashboard-stops-breaking",
     title: "LATAM Inventory Health Dashboard finally stops breaking",
-    description: "Power BI dashboard comparing safety stock vs on-hand stock. The team now talks in 'reds' and 'yellows' instead of screenshotting spreadsheets.",
-    date: "Dec 05, 2025",
-    tags: ["powerbi", "supply-chain", "automation"],
+    desc: "Power BI dashboard that replaced screenshot-driven firefighting with shared status language.",
+    date: "2025-12-05",
   },
   {
-    slug: "thesis-chokepoint",
+    slug: "thesis-chokepoint-model",
     title: "Thesis: from 'I want to do semiconductors' to a real chokepoint model",
-    description: "Locked in the CoWoS/HBM chokepoint as the core. Decided to bake my disagreement with the literature into the thesis.",
-    date: "Nov 10, 2025",
-    tags: ["thesis", "semiconductors", "research"],
+    desc: "Locked the CoWoS/HBM chokepoint as the core and turned disagreement with the literature into a thesis.",
+    date: "2025-11-10",
   },
   {
-    slug: "cost-intelligence",
-    title: "Manufacturing Cost Intelligence System becomes a real thinking tool",
-    description: "Flight simulator for manufacturing decisions. You can feel portfolio-level impact in a slider move.",
-    date: "Jul 20, 2025",
-    tags: ["manufacturing", "analytics", "streamlit"],
-  },
-  {
-    slug: "fleet-optimizer",
-    title: "Cross-Border Fleet Optimizer actually starts working",
-    description: "First time the model chose a longer route in kilometers but cheaper in total cost. Stopped feeling like a school assignment.",
-    date: "Jun 15, 2025",
-    tags: ["logistics", "python", "optimization"],
+    slug: "risk-scoring-rebalance",
+    title: "Risk scoring that doesn’t inflate everything to ‘High’",
+    desc: "A simple constraint-based rebalance: keep severity honest, make likelihood discriminative.",
+    date: "2025-10",
   },
 ];
 
 export default function NotesPage() {
   return (
-    <div className="min-h-screen bg-[var(--bg)]">
-      <div className="max-w-[1000px] mx-auto px-12">
-        {/* Header */}
-        <header className="pt-10 pb-10 flex items-center justify-between border-b border-[var(--hair)]">
-          <Link
-            href="/"
-            className="text-[20px] font-semibold text-[var(--text)] tracking-[-0.02em]"
-          >
-            Benjamin Arce
-          </Link>
+    <div className="page">
+      <div className="container">
+        <h1 className="page-title">
+          Notes <span className="accent">/</span>
+        </h1>
+        <p className="page-subtitle">
+          Not a polished blog. More like an engineering log: decisions, lessons, and what I’m building.
+        </p>
 
-          <nav className="nav-container">
-            <Link href="/notes" className="nav-link-active">
-              Notes
-            </Link>
-            <Link href="/about" className="nav-link">
-              About
-            </Link>
-          </nav>
-
-          <div className="social-container">
-            <a
-              href="https://github.com/benjaminarce-clouds"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-              className="social-link"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/benjaminarce"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="social-link"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-              </svg>
-            </a>
-          </div>
-        </header>
-
-        {/* Intro */}
-        <section className="pt-16 pb-12 border-b border-[var(--hair)]">
-          <h1 className="text-[32px] font-semibold tracking-[-0.02em] text-[var(--text)] mb-4">
-            Log
-          </h1>
-          <p className="text-[16px] leading-[1.7] text-[var(--muted)] max-w-[56ch]">
-            This isn't a polished blog. It's a changelog of what I'm actually working on: research, side projects, and the occasional "I finally wired this thing correctly" moment.
-          </p>
-        </section>
-
-        {/* Entries - same style as work */}
-        <main className="pt-12 pb-32">
-          {logs.map((log, index) => (
-            <Link
-              key={log.slug}
-              href={`/notes/${log.slug}`}
-              className={`project-link ${index === 0 ? "pt-0" : "pt-12"} pb-12 ${
-                index < logs.length - 1 ? "border-b border-[var(--hair)]" : ""
-              }`}
-            >
-              <article className="flex justify-between items-start gap-12">
-                <div className="flex-1">
-                  <h2 className="project-title text-[24px] font-semibold tracking-[-0.02em] text-[var(--text)] leading-[1.3]">
-                    {log.title}
-                  </h2>
-                  <p className="mt-3 text-[16px] leading-[1.6] text-[var(--muted)] max-w-[56ch]">
-                    {log.description}
-                  </p>
-                  <p className="mt-3 text-[13px] text-[var(--faint)]">
-                    {log.tags.join(", ")}
-                  </p>
-                </div>
-                <span className="text-[14px] text-[var(--faint)] flex-shrink-0 pt-1">
-                  {log.date}
-                </span>
-              </article>
+        <div className="list" aria-label="Notes list">
+          {NOTES.map((n) => (
+            <Link key={n.slug} href={`/notes/${n.slug}`} className="row">
+              <div className="row-main">
+                <h2 className="row-title">{n.title}</h2>
+                <p className="row-desc">{n.desc}</p>
+              </div>
+              <div className="row-meta">{n.date}</div>
             </Link>
           ))}
-        </main>
+        </div>
       </div>
     </div>
   );
