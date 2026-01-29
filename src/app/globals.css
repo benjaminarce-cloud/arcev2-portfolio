@@ -38,6 +38,13 @@ a {
   background: rgba(196, 90, 59, 0.15);
 }
 
+/* Navigation container */
+.nav-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 /* Navigation links */
 .nav-link {
   font-size: 14px;
@@ -53,6 +60,13 @@ a {
   font-size: 14px;
   color: var(--text);
   font-weight: 500;
+}
+
+/* Social icons container */
+.social-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 /* Social icons */
