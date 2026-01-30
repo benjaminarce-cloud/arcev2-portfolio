@@ -105,12 +105,12 @@ a {
 }
 
 .brand {
-  font-size: 18px;
-  font-weight: 750;              /* more pop */
-  letter-spacing: -0.02em;       /* tighter */
+  font-size: 20px;        /* bigger */
+  font-weight: 800;       /* stronger */
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
-.nav {
   display: flex;
   align-items: center;
   gap: 18px;
