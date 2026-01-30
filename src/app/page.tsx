@@ -29,10 +29,10 @@ const workItems = [
 ];
 
 const latestNote = {
-  title: "LATAM Inventory Health Dashboard finally stops breaking",
-  desc: "The shift: from screenshot-driven firefighting to one shared operational view.",
-  date: "2025-12-05",
-  href: "/notes/latam-inventory-dashboard-stops-breaking",
+  title: "This site: turning a portfolio into something honest and alive",
+  desc: "Next.js + Vercel, built as a log — the important part is what broke and what changed.",
+  date: "Dec 27, 2025",
+  href: "/notes/site-honest-and-alive",
 };
 
 export default function HomePage() {
@@ -47,7 +47,14 @@ export default function HomePage() {
           A quick scan of what I’ve shipped <span className="accent">/</span> details on click.
         </p>
 
-        <div style={{ marginTop: 34 }}>
+        {/* Optional accent row under subtitle */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
+          <span className="pill">work</span>
+          <span className="pill">notes</span>
+          <span className="pill">now</span>
+        </div>
+
+        <div style={{ marginTop: 10 }}>
           <div className="kicker">Work</div>
           <div className="list" aria-label="Work overview">
             {workItems.map((item) => (
