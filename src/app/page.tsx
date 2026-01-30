@@ -37,22 +37,15 @@ const latestNote = {
 
 export default function HomePage() {
   return (
-    <div className="page">
+    <div className="page page-home">
       <div className="container">
         <h1 className="page-title">
           Portfolio <span className="accent">/</span>
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          A quick scan of what I’ve shipped <span className="accent">/</span> details on click.
+          Shipped work. Working notes. <span className="emph">Nothing polished on purpose.</span>
         </p>
-
-        {/* Accent row under subtitle */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
-          <span className="pill">work</span>
-          <span className="pill">notes</span>
-          <span className="pill">now</span>
-        </div>
 
         <div style={{ marginTop: 10 }}>
           <div className="kicker">Work</div>
@@ -69,7 +62,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div style={{ marginTop: 44 }}>
+        <div style={{ marginTop: 28 }}>
           <div className="kicker">Latest note</div>
           <div className="list" aria-label="Latest note">
             <Link href={latestNote.href} className="row">
