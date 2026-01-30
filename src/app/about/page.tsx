@@ -10,8 +10,16 @@ export default function AboutPage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          What I’m building lately <span className="accent">/</span> what I’m learning the hard way.
+          What I’m building lately <span className="accent">/</span>{" "}
+          <span className="emph">what I’m learning the hard way</span>.
         </p>
+
+        {/* Accent row UNDER subtitle */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
+          <span className="pill">current focus</span>
+          <span className="pill">in progress</span>
+          <span className="pill">no pretending</span>
+        </div>
 
         <div className="prose">
           <hr />
