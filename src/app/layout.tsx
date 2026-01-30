@@ -66,27 +66,23 @@ export default function RootLayout({
                 </div>
 
                 <div className="icon-links" aria-label="Social">
-                 // inside <div className="icon-links" aria-label="Social">
+                  <a
+                    className="icon-link"
+                    href="https://github.com/benjaminarce-cloud"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="GitHub"
+                  >
+                    <IconGitHub />
+                  </a>
 
-<a
-  className="icon-link"
-  href="https://github.com/benjaminarce-cloud"
-  target="_blank"
-  rel="noreferrer"
-  aria-label="GitHub"
->
-  <IconGitHub />
-</a>
-
-<a
-  className="icon-link"
-  href="https://www.linkedin.com/in/arcebenjamin/"
-  target="_blank"
-  rel="noreferrer"
-  aria-label="LinkedIn"
->
-  <IconLinkedIn />
-</a>
+                  <a
+                    className="icon-link"
+                    href="https://www.linkedin.com/in/arcebenjamin/"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="LinkedIn"
+                  >
                     <IconLinkedIn />
                   </a>
                 </div>
