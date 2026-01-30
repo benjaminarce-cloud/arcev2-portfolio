@@ -28,18 +28,18 @@ const workItems = [
   },
 ];
 
+// Set this to whatever is truly your most recent engineering note.
 const latestNote = {
-  title: "Risk scoring that doesn’t inflate everything to ‘High’",
-  desc: "A simple constraint-based rebalance: keep severity honest, make likelihood discriminative.",
-  date: "2025-10",
-  href: "/notes/risk-scoring-rebalance",
+  title: "LATAM Inventory Health Dashboard finally stops breaking",
+  desc: "Power BI dashboard comparing safety stock vs on-hand stock. The team now talks in reds/yellows instead of screenshots.",
+  date: "2025-12-05",
+  href: "/notes/latam-inventory-dashboard-stops-breaking",
 };
 
 export default function HomePage() {
   return (
     <div className="page">
       <div className="container">
-        {/* Hero (scan-first, Anthropic-ish) */}
         <h1 className="page-title">
           Scan-first portfolio <span className="accent">/</span>
         </h1>
@@ -48,7 +48,6 @@ export default function HomePage() {
           The point is signal, not story.
         </p>
 
-        {/* WORK */}
         <div style={{ marginTop: 34 }}>
           <div className="kicker">Work</div>
           <div className="list" aria-label="Work overview">
@@ -64,7 +63,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* LATEST NOTE (single item) */}
         <div style={{ marginTop: 44 }}>
           <div className="kicker">Latest note</div>
           <div className="list" aria-label="Latest note">
