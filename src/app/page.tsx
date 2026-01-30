@@ -26,12 +26,6 @@ const workItems = [
     date: "2025-07",
     href: "/work/border-fleet-optimizer",
   },
-  {
-    title: "Film Portfolio Platform",
-    desc: "Next.js 15 + Cloudinary video system: what shipped, what broke, and patterns that stuck.",
-    date: "2026-01",
-    href: "/work/film-portfolio-platform",
-  },
 ];
 
 const latestNote = {
@@ -45,15 +39,16 @@ export default function HomePage() {
   return (
     <div className="page">
       <div className="container">
-        <h1 className="page-title">
-          Portfolio <span className="accent">/</span>
+        <h1 className="home-title">
+          Benjamin Arce <span className="accent">/</span>
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Shipped work. Working notes. Nothing polished on purpose.
+          Shipped work. Working notes. Nothing polished on purpose{" "}
+          <span className="accent">/</span>
         </p>
 
-        <div style={{ marginTop: 10 }}>
+        <div style={{ marginTop: 14 }}>
           <div className="kicker">Work</div>
           <div className="list" aria-label="Work overview">
             {workItems.map((item) => (
@@ -68,7 +63,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 34 }}>
           <div className="kicker">Latest note</div>
           <div className="list" aria-label="Latest note">
             <Link href={latestNote.href} className="row">
