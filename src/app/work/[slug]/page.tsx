@@ -188,7 +188,7 @@ const WORK: WorkProject[] = [
 
     technical: [
       {
-        heading: "Technical appendix (for the nerds)",
+        heading: "Technical appendix",
         bullets: [
           "Problem type: tri-objective simulation–optimization at a single chokepoint in a multi-echelon supply chain",
           "Decision layer: regions r, time t, products p, modes m; decisions like x_pr (alloc shares), c_r (safety capacity), mode shares by route/time",
