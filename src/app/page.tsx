@@ -28,8 +28,6 @@ const workItems = [
   },
 ];
 
-// Make this the actual latest engineering note.
-// (Risk scoring removed.)
 const latestNote = {
   title: "LATAM Inventory Health Dashboard finally stops breaking",
   desc: "The shift: from screenshot-driven firefighting to one shared operational view.",
@@ -46,7 +44,7 @@ export default function HomePage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Quick scan. Click only if you care.
+          A quick scan of what I’ve shipped <span className="accent">/</span> details on click.
         </p>
 
         <div style={{ marginTop: 34 }}>
