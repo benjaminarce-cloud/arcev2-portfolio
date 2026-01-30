@@ -29,10 +29,10 @@ const workItems = [
 ];
 
 const latestNote = {
-  title: "This site: turning a portfolio into something honest and alive",
-  desc: "Next.js + Vercel, built as a log — the important part is what broke and what changed.",
-  date: "Dec 27, 2025",
-  href: "/notes/site-honest-and-alive",
+  title: "Film Portfolio Build — Quick Overview",
+  desc: "Next.js 15 + Cloudinary: what shipped, what broke, and patterns that stuck.",
+  date: "Jan 2026",
+  href: "/notes/film-portfolio-build-quick-overview",
 };
 
 export default function HomePage() {
@@ -47,7 +47,7 @@ export default function HomePage() {
           A quick scan of what I’ve shipped <span className="accent">/</span> details on click.
         </p>
 
-        {/* Optional accent row under subtitle */}
+        {/* Accent row under subtitle */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
           <span className="pill">work</span>
           <span className="pill">notes</span>
