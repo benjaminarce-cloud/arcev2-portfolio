@@ -39,8 +39,8 @@ export default function HomePage() {
   return (
     <div className="page">
       <div className="container">
-        <h1 className="home-title">
-          Benjamin Arce <span className="accent">/</span>
+        <h1 className="page-title">
+          Portfolio <span className="accent">/</span>
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
