@@ -9,7 +9,7 @@ export default function AboutPage() {
         </h1>
 
         <p className="page-subtitle">
-          Decisions, lessons, and what I’m building{" "}
+  How I think. What I’m shipping <span className="accent" style={{ opacity: 0.75 }}>/</span>
           <span className="accent" style={{ opacity: 0.75 }}>
             /
           </span>
