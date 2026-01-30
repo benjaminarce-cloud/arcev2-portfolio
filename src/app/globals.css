@@ -165,6 +165,15 @@ a {
   padding: var(--section) 0;
 }
 
+/* Home-only title (bigger than page-title) */
+.home-title {
+  font-size: clamp(44px, 5.4vw, 74px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 850;
+  margin: 0 0 12px 0;
+}
+
 .page-title {
   font-size: clamp(34px, 4vw, 54px);
   line-height: 1.05;
