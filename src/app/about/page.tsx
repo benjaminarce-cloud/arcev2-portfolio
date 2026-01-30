@@ -35,7 +35,7 @@ export default function AboutPage() {
             <div className="kicker">Current focus</div>
             <ul className="bullets">
               <li>Building portfolio sites as a side job (and getting sharper every build).</li>
-              <li>Shipping client work: filmmaker projects + an upcoming Mexican product brand.</li>
+              <li>Shipping client work: filmmaker projects + an upcoming brand.</li>
               <li>My path to a U.S. master’s: tightening the story, the work, and the proof.</li>
               <li>First thesis: stuck in reading mode — turning “topic fog” into an actual model.</li>
               <li>Keeping this site honest: quick scan first, then deep dives if you care.</li>
