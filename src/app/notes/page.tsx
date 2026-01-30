@@ -10,6 +10,12 @@ type NoteRow = {
 
 const NOTES: NoteRow[] = [
   {
+    slug: "film-portfolio-build-quick-overview",
+    title: "Film Portfolio Build — Quick Overview",
+    desc: "Next.js 15 + Cloudinary video portfolio: what shipped, what broke, and the patterns that stuck.",
+    date: "Jan 2026",
+  },
+  {
     slug: "site-honest-and-alive",
     title: "This site: turning a portfolio into something honest and alive",
     desc: "Next.js + Vercel, built as a log — not a brochure.",
@@ -55,7 +61,7 @@ export default function NotesPage() {
 
         {/* Accent row UNDER subtitle */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
-          <span className="pill">no fluff</span>
+          <span className="pill">what shipped</span>
           <span className="pill">what broke</span>
           <span className="pill">what changed</span>
         </div>
