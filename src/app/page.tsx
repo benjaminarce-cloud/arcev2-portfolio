@@ -36,7 +36,7 @@ const workItems: WorkItem[] = [
   },
   {
     title: "Film Portfolio Platform",
-    desc: "Next.js 15 + Cloudinary video pipeline: hover previews, autoplay rules, mobile-safe behavior.",
+    desc: "Next.js 15 + Cloudinary pipeline: hover previews, autoplay rules, mobile-safe behavior.",
     date: "2026-01",
     href: "/work/film-portfolio-platform",
     live: { label: "mandoaguilar.com", url: "https://mandoaguilar.com" },
@@ -66,28 +66,29 @@ export default function HomePage() {
           <div className="kicker">Work</div>
           <div className="list" aria-label="Work overview">
             {workItems.map((item) => (
-              <div key={item.href} className="row-wrap">
-                <Link href={item.href} className="row" aria-label={item.title}>
-                  <div className="row-main">
-                    <h2 className="row-title">{item.title}</h2>
-                    <p className="row-desc">{item.desc}</p>
+              <div key={item.href} className="row row-clickable">
+                {/* Full-row click target (no nested anchors) */}
+                <Link href={item.href} className="row-overlay" aria-label={item.title} />
 
-                    {item.live ? (
-                      <div className="row-links" aria-label="External link">
-                        <a
-                          className="row-link"
-                          href={item.live.url}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          {item.live.label}
-                        </a>
-                      </div>
-                    ) : null}
-                  </div>
+                <div className="row-main">
+                  <h2 className="row-title">{item.title}</h2>
+                  <p className="row-desc">{item.desc}</p>
 
-                  <div className="row-meta">{item.date}</div>
-                </Link>
+                  {item.live ? (
+                    <div className="row-links" aria-label="External link">
+                      <a
+                        className="row-link"
+                        href={item.live.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {item.live.label}
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+
+                <div className="row-meta">{item.date}</div>
               </div>
             ))}
           </div>
