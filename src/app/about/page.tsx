@@ -10,7 +10,7 @@ export default function AboutPage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Decisions, lessons, and what I’m building <span className="accent">/</span> current focus.
+          What I’m building lately <span className="accent">/</span> what I’m learning the hard way.
         </p>
 
         <div className="prose">
@@ -30,9 +30,7 @@ export default function AboutPage() {
           </ul>
 
           <h2>Get to know me</h2>
-          <p style={{ color: "rgba(21, 21, 21, 0.82)" }}>
-            (Drop your bullets here later.)
-          </p>
+          <p style={{ color: "rgba(21, 21, 21, 0.82)" }}>(Drop your bullets here later.)</p>
 
           <hr />
 
