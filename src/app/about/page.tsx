@@ -17,11 +17,8 @@ export default function AboutPage() {
           Decisions, lessons, and what I’m building <span className="accent">/</span>
         </p>
 
-        <div className="prose">
-          <div className="kicker" style={{ marginTop: 18 }}>
-            Notes from my brain
-          </div>
-
+        <div style={{ marginTop: 18 }}>
+          <div className="kicker">Notes from my brain</div>
           <ul style={{ margin: "12px 0 0", paddingLeft: 18 }}>
             <li>“Just trust me.” No.</li>
             <li>It’s not that deep (until it is).</li>
@@ -33,16 +30,16 @@ export default function AboutPage() {
             <li>I can do anything.</li>
             <li>Peace, then output.</li>
           </ul>
+        </div>
 
-          <div className="kicker" style={{ marginTop: 28 }}>
-            Current focus
-          </div>
-
+        <div style={{ marginTop: 26 }}>
+          <div className="kicker">Current focus</div>
           <ul style={{ margin: "12px 0 0", paddingLeft: 18 }}>
-            <li>Building systems that hold up under scrutiny.</li>
-            <li>Getting faster without getting sloppy.</li>
-            <li>Training like a hybrid athlete: strength + engine.</li>
-            <li>Learning on purpose (and too much).</li>
+            <li>Building portfolio sites as a side job (and getting sharper every build).</li>
+            <li>Shipping client work: filmmaker projects + an upcoming Mexican product brand.</li>
+            <li>My path to a U.S. master’s: tightening the story, the work, and the proof.</li>
+            <li>First thesis: stuck in reading mode — turning “topic fog” into an actual model.</li>
+            <li>Keeping this site honest: quick scan first, then deep dives if you care.</li>
           </ul>
         </div>
       </div>
