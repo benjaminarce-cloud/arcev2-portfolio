@@ -10,7 +10,7 @@ export default function AboutPage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Current focus. No fluff.
+          Decisions, lessons, and what I’m building <span className="accent">/</span> current focus.
         </p>
 
         <div className="prose">
@@ -31,7 +31,7 @@ export default function AboutPage() {
 
           <h2>Get to know me</h2>
           <p style={{ color: "rgba(21, 21, 21, 0.82)" }}>
-            (You’ll fill this in.) Keep it short: 3–6 bullets max.
+            (Drop your bullets here later.)
           </p>
 
           <hr />
