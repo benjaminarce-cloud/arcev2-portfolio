@@ -12,20 +12,32 @@ const NOTES: NoteRow[] = [
   {
     slug: "site-honest-and-alive",
     title: "This site: turning a portfolio into something honest and alive",
-    desc: "Fast scan, real signal, details only when needed.",
-    date: "2025-12-27",
+    desc: "Next.js + Vercel, built as a log — not a brochure.",
+    date: "Dec 27, 2025",
   },
   {
     slug: "latam-inventory-dashboard-stops-breaking",
     title: "LATAM Inventory Health Dashboard finally stops breaking",
-    desc: "From screenshot-driven firefighting to one shared operational view.",
-    date: "2025-12-05",
+    desc: "Power BI + automation: safety stock vs on-hand, green/yellow/red semantics.",
+    date: "Dec 05, 2025",
   },
   {
     slug: "thesis-chokepoint-model",
-    title: "Thesis: from vague interest to a real chokepoint model",
-    desc: "Picking the bottleneck first made the entire scope behave.",
-    date: "2025-11-10",
+    title: "Thesis: from ‘I want to do semiconductors’ to a real chokepoint model",
+    desc: "CoWoS/HBM chokepoint → tri-objective model (cost, resilience, carbon).",
+    date: "Nov 10, 2025",
+  },
+  {
+    slug: "manufacturing-cost-intelligence-tool",
+    title: "Manufacturing Cost Intelligence System becomes a real thinking tool",
+    desc: "Slider-driven portfolio P&L thinking tool (honest about what’s V1).",
+    date: "Jul 20, 2025",
+  },
+  {
+    slug: "cross-border-fleet-optimizer-working",
+    title: "Cross-Border Fleet Optimizer actually starts working",
+    desc: "OR-Tools + OSRM: cost-first routing that starts behaving like a real tool.",
+    date: "Jun 15, 2025",
   },
 ];
 
@@ -38,8 +50,15 @@ export default function NotesPage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Engineering notes <span className="accent">/</span> decisions, lessons, fixes.
+          Engineering logs <span className="accent">/</span> decisions, lessons, fixes.
         </p>
+
+        {/* Accent row UNDER subtitle */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
+          <span className="pill">no fluff</span>
+          <span className="pill">what broke</span>
+          <span className="pill">what changed</span>
+        </div>
 
         <div className="list" aria-label="Notes list">
           {NOTES.map((n) => (
