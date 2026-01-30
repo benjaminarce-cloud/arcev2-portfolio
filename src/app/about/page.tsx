@@ -23,7 +23,7 @@ export default function AboutPage() {
               <li>It’s not that deep (until it is).</li>
               <li>I’m awkward until I lock in.</li>
               <li>Pressure is fine. Confusion is not.</li>
-              <li>Coffee runs are thinking time.</li>
+              <li>Coffee is part of the workflow.</li>
               <li>Music stays on.</li>
               <li>I like learning too much.</li>
               <li>I can do anything.</li>
