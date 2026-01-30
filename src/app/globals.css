@@ -105,8 +105,8 @@ a {
 }
 
 .brand {
-  font-size: 20px;        /* bigger */
-  font-weight: 800;       /* stronger */
+  font-size: clamp(18px, 1.3vw, 22px);
+  font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1;
 }
