@@ -10,28 +10,29 @@ const workItems = [
   },
   {
     title: "Chokepoint Frontier Model",
-    desc: "Tri-objective sim/opt mapping cost vs resilience vs carbon at CoWoS/HBM bottleneck.",
+    desc: "Tri-objective mapping: cost vs resilience vs carbon at a CoWoS/HBM bottleneck.",
     date: "2025-09",
     href: "/work/chokepoint-frontier-model",
   },
   {
     title: "Cost Flight Simulator",
-    desc: "What-if manufacturing P&L engine for margin impact in seconds.",
+    desc: "Manufacturing what-if engine: margin impact in seconds.",
     date: "2025-08",
     href: "/work/cost-flight-simulator",
   },
   {
     title: "Border Fleet Optimizer",
-    desc: "CVRPTW cross-border day plan optimized for cost, not distance.",
+    desc: "CVRPTW day plan optimized for cost (not distance).",
     date: "2025-07",
     href: "/work/border-fleet-optimizer",
   },
 ];
 
-// Set this to whatever is truly your most recent engineering note.
+// Make this the actual latest engineering note.
+// (Risk scoring removed.)
 const latestNote = {
   title: "LATAM Inventory Health Dashboard finally stops breaking",
-  desc: "Power BI dashboard comparing safety stock vs on-hand stock. The team now talks in reds/yellows instead of screenshots.",
+  desc: "The shift: from screenshot-driven firefighting to one shared operational view.",
   date: "2025-12-05",
   href: "/notes/latam-inventory-dashboard-stops-breaking",
 };
@@ -41,11 +42,11 @@ export default function HomePage() {
     <div className="page">
       <div className="container">
         <h1 className="page-title">
-          Scan-first portfolio <span className="accent">/</span>
+          Portfolio <span className="accent">/</span>
         </h1>
-        <p className="page-subtitle">
-          Built like a CV: <span className="emph">quick read upfront</span>, full detail on click.
-          The point is signal, not story.
+
+        <p className="page-subtitle" style={{ maxWidth: 720 }}>
+          Quick scan. Click only if you care.
         </p>
 
         <div style={{ marginTop: 34 }}>
