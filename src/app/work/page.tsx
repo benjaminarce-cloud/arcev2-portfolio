@@ -35,9 +35,9 @@ export default function WorkPage() {
         <h1 className="page-title">
           Work <span className="accent">/</span>
         </h1>
-        <p className="page-subtitle">
-          Scan-first briefs. <span className="emph">One line tells you why it matters</span>.
-          Click for full detail.
+
+        <p className="page-subtitle" style={{ maxWidth: 720 }}>
+          Selected professional work <span className="accent">/</span> engineering systems, modeling, automation.
         </p>
 
         <div className="list" aria-label="Work list">
