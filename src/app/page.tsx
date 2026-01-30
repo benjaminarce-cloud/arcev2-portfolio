@@ -1,7 +1,15 @@
 // src/app/page.tsx
 import Link from "next/link";
 
-const workItems = [
+type WorkItem = {
+  title: string;
+  desc: string;
+  date: string;
+  href: string;
+  live?: { label: string; url: string };
+};
+
+const workItems: WorkItem[] = [
   {
     title: "Inbox → Inventory Radar",
     desc: "Daily export → live LATAM traffic-light view of stock risk.",
@@ -26,6 +34,13 @@ const workItems = [
     date: "2025-07",
     href: "/work/border-fleet-optimizer",
   },
+  {
+    title: "Film Portfolio Platform",
+    desc: "Next.js 15 + Cloudinary video pipeline: hover previews, autoplay rules, mobile-safe behavior.",
+    date: "2026-01",
+    href: "/work/film-portfolio-platform",
+    live: { label: "mandoaguilar.com", url: "https://mandoaguilar.com" },
+  },
 ];
 
 const latestNote = {
@@ -37,14 +52,14 @@ const latestNote = {
 
 export default function HomePage() {
   return (
-    <div className="page page-home">
+    <div className="page">
       <div className="container">
         <h1 className="page-title">
           Portfolio <span className="accent">/</span>
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Shipped work. Working notes. <span className="emph">Nothing polished on purpose.</span>
+          Shipped work. Working notes. Nothing polished on purpose.
         </p>
 
         <div style={{ marginTop: 10 }}>
@@ -55,14 +70,29 @@ export default function HomePage() {
                 <div className="row-main">
                   <h2 className="row-title">{item.title}</h2>
                   <p className="row-desc">{item.desc}</p>
+
+                  {item.live ? (
+                    <div className="row-links">
+                      <a
+                        className="row-link"
+                        href={item.live.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {item.live.label}
+                      </a>
+                    </div>
+                  ) : null}
                 </div>
+
                 <div className="row-meta">{item.date}</div>
               </Link>
             ))}
           </div>
         </div>
 
-        <div style={{ marginTop: 28 }}>
+        <div style={{ marginTop: 34 }}>
           <div className="kicker">Latest note</div>
           <div className="list" aria-label="Latest note">
             <Link href={latestNote.href} className="row">
