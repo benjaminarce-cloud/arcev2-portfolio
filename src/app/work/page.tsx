@@ -37,8 +37,15 @@ export default function WorkPage() {
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Selected professional work <span className="accent">/</span> engineering systems, modeling, automation.
+          Selected professional work <span className="accent">/</span> systems, modeling, automation.
         </p>
+
+        {/* Accent row UNDER subtitle */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
+          <span className="pill">ship-first</span>
+          <span className="pill">clean interfaces</span>
+          <span className="pill">data → decisions</span>
+        </div>
 
         <div className="list" aria-label="Work list">
           {workItems.map((item) => (
