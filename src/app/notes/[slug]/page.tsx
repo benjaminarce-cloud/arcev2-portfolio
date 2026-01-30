@@ -19,6 +19,72 @@ type Note = {
 
 const NOTES: Note[] = [
   {
+    slug: "film-portfolio-build-quick-overview",
+    title: "Film Portfolio Build — Quick Overview",
+    date: "Jan 2026",
+    tags: ["nextjs", "video", "cloudinary", "ffmpeg", "debugging"],
+    oneLine:
+      "Built a 31-project film portfolio on Next.js 15 with hover previews, autoplay flows, Cloudinary hosting, and a minimal A24-ish aesthetic — plus a bunch of real-world breakage fixes.",
+    quickScan: {
+      context:
+        "Client needed a fast, modern film portfolio: full-screen hero, responsive grid, video-first UX, and clean navigation that still feels premium.",
+      breakage:
+        "Hero gaps, mobile header sizing, Next.js 15 params in client components, mobile fullscreen restrictions, Cloudinary ID chaos, bad poster frames, header overlap, and the classic ‘hide in UI vs delete from data’ trap.",
+      takeaway:
+        "Build incrementally, test on real devices, expect platform constraints, use tooling when third parties are messy, and prioritize UX and robustness over clever code.",
+    },
+    sections: [
+      {
+        heading: "What we built",
+        body: [
+          "A Next.js 15 film portfolio with 31 video projects.",
+          "Full-screen video hero + parallax-ish work sections.",
+          "Hover-preview video cards in a responsive grid.",
+          "Autoplay behavior on click, with platform-safe fallbacks.",
+          "Cloudinary video hosting with dynamic poster extraction.",
+          "Light/dark theme + scroll-responsive header.",
+          "Minimalist aesthetic influenced by A24 (typography + whitespace doing the work).",
+        ],
+      },
+      {
+        heading: "What broke and how we fixed it",
+        body: [
+          "1) Work section ‘leaked’ into the hero: `min-h` left a gap where the next section peeked through. Fix: use `h-screen` for true 100vh coverage.",
+          "2) Mobile header got cut off: desktop padding was too big. Fix: responsive padding/text, hide non-critical header content on mobile, reduce gaps.",
+          "3) Next.js 15 client component params caused 404s: `params` is a Promise. Fix: server can `await`, client must `use(params)`.",
+          "4) Mobile auto-fullscreen failed: iOS blocks fullscreen requests without direct user gesture. Fix: device detection + desktop-only fullscreen, always allow play.",
+          "5) Cloudinary asset naming chaos: random suffixes meant filenames weren’t predictable. Fix: pull asset list via Cloudinary API and map manually (reliable, tedious).",
+          "6) Bad poster frames: first frame often black/blurry. Fix: use Cloudinary frame extraction (`so_X`) to pick better frames without re-uploading.",
+          "7) Header overlapped detail page content: fixed header + top-starting content caused collisions. Fix: simplify the detail page UI and avoid duplicating header navigation.",
+          "8) Year removed from UI but still needed: almost deleted it from the data model. Fix: hide in UI, keep in data for future filtering/sorting.",
+        ],
+      },
+      {
+        heading: "New challenges and patterns that worked",
+        body: [
+          "Compression pipeline: raw videos were too big. Built an FFmpeg flow for preview loops and compressed 1080p full versions (big size cuts with no visible quality loss).",
+          "Priority ordering: client wanted featured projects first. Chose manual array order (curation beats sorting logic for small datasets).",
+          "Autoplay URL flag: used `?autoplay=true` to differentiate click-through vs direct navigation (better UX and shareable URLs).",
+          "Header state machine: combined Intersection Observer (hero in view) + scroll direction tracking (hide on scroll down).",
+          "Hover preview without fighting autoplay policies: muted autoplay runs; CSS opacity reveals on hover (smoother than JS play/pause spam).",
+          "Fluid type: used `clamp()` for typography that scales smoothly instead of breakpoint jumps.",
+          "Theme switching without re-renders: CSS variables + `data-theme` attribute for instant updates.",
+        ],
+      },
+      {
+        heading: "Summary",
+        body: [
+          "Built: 31-project video portfolio with autoplay flows, hover previews, responsive layout, theme switching.",
+          "Broke: hero gaps, mobile header sizing, Next.js 15 params, fullscreen policies, asset management, posters, header overlap, UI vs data confusion.",
+          "Fixed: all of it with better patterns: full viewport sections, responsive sizing, `use()` for params in client components, device-safe fallbacks, tooling, transformations, minimal UI, data preservation.",
+          "Key lesson: test on real devices, have fallbacks for everything, and keep the design simple so the work stays loud.",
+        ],
+      },
+    ],
+    related: { label: "Work (site-building)", href: "/about" },
+  },
+
+  {
     slug: "site-honest-and-alive",
     title: "This site: turning a portfolio into something honest and alive",
     date: "Dec 27, 2025",
@@ -75,48 +141,45 @@ const NOTES: Note[] = [
     date: "Dec 05, 2025",
     tags: ["powerbi", "supply-chain", "automation"],
     oneLine:
-      "Built a Power BI dashboard for a LATAM supply chain team comparing safety stock vs on-hand stock, classifying each material–country pair as green / yellow / red.",
+      "Built a Power BI dashboard for the LATAM supply chain team that compares safety stock vs on-hand stock and classifies each material–country pair as green / yellow / red.",
     quickScan: {
       context:
-        "Daily/weekly exports were being handled manually. Definitions drifted across countries. Small schema differences made joins fail silently.",
+        "Daily/weekly files were being handled manually. Definitions drifted across countries. The dashboard broke the moment a column changed.",
       breakage:
-        "DAX measures turned into spaghetti; Incorta variants used different material-code formats; Power Automate flows were fragile and failed quietly.",
+        "DAX logic turned into spaghetti; Incorta reports used different material-code formats; joins failed silently; automation was fragile.",
       takeaway:
-        "Reliability beats cleverness: normalize inputs, reconcile identifiers, and make the operational language (reds/yellows/greens) stable.",
+        "A stable pipeline beats a fancy dashboard. Normalize, validate, and make the operational language stable first.",
     },
     sections: [
       {
-        heading: "What actually happened",
+        heading: "What was happening",
         body: [
-          "I rebuilt the Power BI model multiple times after the DAX logic turned into spaghetti.",
-          "At one point, every new measure felt like a patch on top of another patch.",
+          "The workflow failed in small ways: inconsistent columns, missing tabs, mixed currencies, and country-level “creative formatting.”",
+          "The dashboard wasn’t wrong because visuals were wrong — it was wrong because inputs were unstable.",
         ],
       },
       {
-        heading: "The material-code problem",
+        heading: "The real problem",
         body: [
-          "Different Incorta reports used slightly different material codes, so the joins silently failed and comparisons made no sense.",
-          "I had to design a ‘family’ mapping to reconcile formats like ***-***-*** vs ***-**.",
-          "The planning was not glamorous: manual checking, pattern spotting, and making sure one bad slash didn’t break the lookup.",
+          "The dashboard was acting like a data pipeline, but it had no pipeline discipline.",
+          "No contracts. No validation. No stable definition of what a row means across countries.",
         ],
       },
       {
-        heading: "Automation wasn’t magic",
+        heading: "What I changed",
         body: [
-          "Power Automate turned out to be surprisingly fragile.",
-          "Small changes in conditions or dynamic content broke the flow that takes the daily Incorta email and pushes files into SharePoint.",
-          "Debugging was basically: edit, wait for the next run, hope it doesn’t silently die.",
+          "Standardized intake and semantics so green/yellow/red means the same thing every time.",
+          "Made the model more robust to upstream drift instead of letting Power BI guess.",
         ],
       },
       {
-        heading: "The payoff",
+        heading: "What I’d do next",
         body: [
-          "The team now talks in terms of “reds” and “yellows” instead of screenshotting spreadsheets.",
-          "That alone made the pain worth it.",
+          "Add basic data quality flags and ingestion history.",
+          "Add weekly roll-ups: what flipped status and what stays chronically red.",
         ],
       },
     ],
-    related: { label: "LATAM Inventory Health Dashboard", href: "/work/inbox-inventory-radar" },
   },
 
   {
@@ -124,47 +187,37 @@ const NOTES: Note[] = [
     title: "Thesis: from ‘I want to do semiconductors’ to a real chokepoint model",
     date: "Nov 10, 2025",
     tags: ["thesis", "semiconductors", "research"],
-    oneLine:
-      "Locked in the CoWoS/HBM chokepoint and started turning frustration with the literature into a concrete tri-objective model.",
+    oneLine: "Pick the bottleneck first. Then force everything to orbit it.",
     quickScan: {
       context:
-        "I got stuck in topic fog: semis + resilience + climate felt either too generic or too impossible as a student.",
+        "Reading spirals when the topic is too wide. Every paper feels relevant and none of them produce a concrete next step.",
       breakage:
-        "I kept reading papers that end with ‘firms should collaborate more’ as the conclusion — which felt unrealistic for semiconductors and honestly lazy.",
+        "Papers ended with “collaborate more,” which felt unrealistic in semiconductors. I needed a mechanism, not vibes.",
       takeaway:
-        "Bake the disagreement into the thesis: assume no magical data sharing; focus on levers a single firm can control at the chokepoint.",
+        "Choose the chokepoint and treat it as the mechanism. Scope becomes a filter, not a constraint.",
     },
     sections: [
       {
-        heading: "Topic fog (the real enemy)",
+        heading: "Why reading feels like quicksand",
         body: [
-          "I knew what I cared about, but everything sounded either too broad or too hand-wavy.",
-          "Reading kept expanding the problem instead of narrowing it.",
+          "When you don’t have a mechanism, reading becomes collecting: you keep adding papers because you’re not sure what you’re trying to explain.",
+          "You end up with a bibliography, not a model.",
         ],
       },
       {
-        heading: "The literature conclusion I didn’t buy",
+        heading: "The filter that helped",
         body: [
-          "I kept running into some version of: ‘firms should share more data and collaborate across the chain.’",
-          "Nice idea. Also not how semiconductors behaves in the real world.",
+          "Force the chokepoint: if a paper doesn’t change the mechanism, assumptions, or evaluation, it’s not needed right now.",
         ],
       },
       {
-        heading: "Turning point",
+        heading: "Next step (practical)",
         body: [
-          "I decided to bake that disagreement into the thesis: assume no magical cross-firm data sharing.",
-          "Focus on what a single enterprise can control at the CoWoS/HBM stage to buy resilience without blowing up cost and carbon.",
-        ],
-      },
-      {
-        heading: "Where it is right now",
-        body: [
-          "The math itself is fine; the hard part is choosing modeling assumptions that are honest instead of convenient.",
-          "I’m formalizing sets, decision variables, tri-objective (cost, resilience, carbon), plus a simulation layer for disruption scenarios.",
+          "Write a one-page model sketch: variables, constraints, and the minimum output that would make the thesis real.",
+          "Then read again only to fill specific holes.",
         ],
       },
     ],
-    related: { label: "CoWoS/HBM Chokepoint Thesis", href: "/work/chokepoint-frontier-model" },
   },
 
   {
@@ -173,47 +226,36 @@ const NOTES: Note[] = [
     date: "Jul 20, 2025",
     tags: ["manufacturing", "analytics", "streamlit"],
     oneLine:
-      "Took the ‘flight simulator’ idea far enough that one slider move actually feels like portfolio-level impact.",
+      "Took the idea of ‘flight simulator for manufacturing decisions’ and pushed it far enough that you can actually feel portfolio-level impact in a slider move.",
     quickScan: {
       context:
-        "I wanted a decision tool, not spreadsheet babysitting: change drivers, see margin impact, then discuss strategy like adults.",
+        "I wanted a decision tool that replaces fragile spreadsheets with fast, portfolio-level visibility.",
       breakage:
-        "UI logic got messy fast; early ‘AI strategist’ versions just narrated charts; static CSVs tempted me to pretend it was production-ready.",
+        "Too much logic in the UI; early AI was just narrating charts; static CSVs tempted me to pretend it was production-ready.",
       takeaway:
-        "Separate brain from UI, feed feasibility explicitly, and be honest about what is a thinking tool vs an ERP replacement.",
+        "Separate brain from UI, feed feasibility explicitly, and be honest about what is V1 vs production.",
     },
     sections: [
       {
         heading: "What changed the quality level",
         body: [
-          "I built the first P&L simulator tying BOM data, cost drivers, and a simple demand model.",
-          "Streamlit made iteration fast, but it was tempting to add sliders with no structure.",
-        ],
-      },
-      {
-        heading: "Refactor that hurt (and fixed it)",
-        body: [
-          "I hit a wall mixing logic into the UI.",
-          "Refactored so /app/core holds the real brain and Streamlit is just the face.",
-          "It hurt for a day and then everything became cleaner.",
+          "Built a first version tying BOM, cost drivers, and demand into a portfolio simulator.",
+          "Refactored to keep core logic separate from Streamlit UI.",
         ],
       },
       {
         heading: "Making the AI not cringe",
         body: [
-          "Early versions just rephrased charts (“costs increased because inputs increased”).",
-          "I had to feed feasibility scores and explicitly tell it what not to say to get something that sounded like a junior consultant instead of a narrator.",
+          "Had to feed feasibility and tell it what not to say so it behaved like a junior consultant, not a narrator.",
         ],
       },
       {
         heading: "The honest limitation",
         body: [
-          "Static CSVs are great for controlled experiments, bad if you pretend it’s production-ready.",
-          "I accepted this version as a thinking tool, not an ERP replacement.",
+          "Static CSVs are great for controlled experiments. Not production-ready without live integrations.",
         ],
       },
     ],
-    related: { label: "Manufacturing Cost Intelligence System", href: "/work/cost-flight-simulator" },
   },
 
   {
@@ -222,40 +264,23 @@ const NOTES: Note[] = [
     date: "Jun 15, 2025",
     tags: ["logistics", "python", "optimization"],
     oneLine:
-      "First real systems project: turned a whiteboard dispatch problem into a Python tool that plans better routes than I would by hand.",
+      "First real systems project: turning a dispatch whiteboard problem into a Python tool that plans better routes than I would by hand.",
     quickScan: {
       context:
-        "Routing is one of those problems humans are bad at: constraints, tradeoffs, and too many combinations for intuition.",
+        "Routing is combinatorial; humans are forced to approximate under stress. I wanted cost-aware plans.",
       breakage:
-        "OR-Tools wiring errors created ‘solved’ routes that made no real-world sense; OSRM setup was Docker + ports + coords pain.",
+        "OR-Tools wiring mistakes + fake straight-line distances made routes technically valid but operationally wrong.",
       takeaway:
-        "Real road times change everything; cost-based objectives expose non-obvious wins; output maps tell the story faster than tables.",
+        "Real road times (OSRM) + cost-based objective is what makes it believable.",
     },
     sections: [
       {
-        heading: "The first version felt fake",
-        body: [
-          "The optimizer ran with straight-line distances, basic capacity, and time windows.",
-          "It technically worked, but it didn’t feel like real logistics.",
-        ],
-      },
-      {
-        heading: "The OR-Tools headache",
-        body: [
-          "I kept wiring callbacks wrong and ended up with routes that ‘solved’ but made no operational sense.",
-          "The early phase was debugging logic more than doing optimization.",
-        ],
-      },
-      {
         heading: "When it became real",
         body: [
-          "I hooked up a local OSRM container so Texas routes use real road travel times.",
-          "Docker pulls, port issues, and coordinate mismatches were part of the journey.",
-          "The first time it chose a longer route in kilometers but cheaper total cost (driver time + fuel) was the moment it stopped feeling like a school assignment.",
+          "Hooked up OSRM for real travel times; first time it chose longer km but cheaper total cost was the turning point.",
         ],
       },
     ],
-    related: { label: "Cross-Border Fleet Optimizer", href: "/work/border-fleet-optimizer" },
   },
 ];
 
