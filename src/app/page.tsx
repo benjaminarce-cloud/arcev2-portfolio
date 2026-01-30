@@ -52,47 +52,48 @@ const latestNote = {
 
 export default function HomePage() {
   return (
-    <div className="page">
+    <div className="page page-home">
       <div className="container">
         <h1 className="page-title">
           Portfolio <span className="accent">/</span>
         </h1>
 
         <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Shipped work. Working notes. Nothing polished on purpose.
+          Shipped work. Working notes. <span className="emph">Nothing polished on purpose.</span>
         </p>
 
         <div style={{ marginTop: 10 }}>
           <div className="kicker">Work</div>
           <div className="list" aria-label="Work overview">
             {workItems.map((item) => (
-              <Link key={item.href} href={item.href} className="row">
-                <div className="row-main">
-                  <h2 className="row-title">{item.title}</h2>
-                  <p className="row-desc">{item.desc}</p>
+              <div key={item.href} className="row-wrap">
+                <Link href={item.href} className="row" aria-label={item.title}>
+                  <div className="row-main">
+                    <h2 className="row-title">{item.title}</h2>
+                    <p className="row-desc">{item.desc}</p>
 
-                  {item.live ? (
-                    <div className="row-links">
-                      <a
-                        className="row-link"
-                        href={item.live.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {item.live.label}
-                      </a>
-                    </div>
-                  ) : null}
-                </div>
+                    {item.live ? (
+                      <div className="row-links" aria-label="External link">
+                        <a
+                          className="row-link"
+                          href={item.live.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {item.live.label}
+                        </a>
+                      </div>
+                    ) : null}
+                  </div>
 
-                <div className="row-meta">{item.date}</div>
-              </Link>
+                  <div className="row-meta">{item.date}</div>
+                </Link>
+              </div>
             ))}
           </div>
         </div>
 
-        <div style={{ marginTop: 34 }}>
+        <div style={{ marginTop: 28 }}>
           <div className="kicker">Latest note</div>
           <div className="list" aria-label="Latest note">
             <Link href={latestNote.href} className="row">
