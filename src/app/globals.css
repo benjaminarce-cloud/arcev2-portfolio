@@ -310,3 +310,27 @@ a {
     font-size: 20px;
   }
 }
+
+/* About lists — make bullets feel designed */
+.bullets {
+  margin: 12px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin: 8px 0;
+  color: rgba(21, 21, 21, 0.82);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(21, 21, 21, 0.55);
+}
