@@ -346,15 +346,15 @@ export default async function NoteDetailPage({
           <div style={{ display: "grid", gap: 10 }}>
             <div>
               <span className="emph">Context</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{note.quickScan.context}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{note.quickScan.context}</span>
             </div>
             <div>
               <span className="emph">Breakage</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{note.quickScan.breakage}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{note.quickScan.breakage}</span>
             </div>
             <div>
               <span className="emph">Takeaway</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{note.quickScan.takeaway}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{note.quickScan.takeaway}</span>
             </div>
           </div>
         </div>
