@@ -1,6 +1,7 @@
 // src/app/layout.tsx
 import "./globals.css";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export const metadata = {
   title: "Benjamin Arce",
