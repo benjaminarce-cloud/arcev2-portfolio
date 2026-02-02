@@ -9,28 +9,47 @@ export default function AboutPage() {
         </h1>
 
         <p className="page-subtitle">
-  How I think. What I’m shipping <span className="accent" style={{ opacity: 0.75 }}>/</span>
+          How I think. What I’m shipping{" "}
           <span className="accent" style={{ opacity: 0.75 }}>
             /
           </span>
         </p>
 
         <div className="prose">
+          {/* Replace "Notes from my brain" bullets with the new text */}
           <div style={{ marginTop: 22 }}>
-            <div className="kicker">Notes from my brain</div>
-            <ul className="bullets">
-              <li>“Just trust me.” No.</li>
-              <li>It’s not that deep (until it is).</li>
-              <li>I’m awkward until I lock in.</li>
-              <li>Pressure is fine. Confusion is not.</li>
-              <li>Coffee is part of the workflow.</li>
-              <li>Music stays on.</li>
-              <li>I like learning too much.</li>
-              <li>I can do anything.</li>
-              <li>Peace, then output.</li>
-            </ul>
+            <div className="kicker">Notes</div>
+
+            <p>
+              I’m an industrial engineering student focused on data, optimization,
+              systems, and continuous improvement. Right now I’m an intern on a
+              LATAM supply chain team, where my job is to make processes cleaner
+              through dashboards, automation, and small tools that reduce friction.
+            </p>
+
+            <p>
+              My curiosity started with a Python fleet optimizer that cut waste and
+              CO2 by turning routing into something you can actually reason about.
+              Since then I’ve kept building across whatever layer matters: Python,
+              SQL, Excel, Power BI, Power Automate, and the occasional website when
+              someone needs something better than a PDF.
+            </p>
+
+            <p>
+              If there’s a pattern here, it’s that I build tools that make people’s
+              jobs easier: less manual work, less repetition, fewer steps between a
+              question and an answer. Half the bugs are just me discovering the
+              “obvious” assumption I never stated.
+            </p>
+
+            <p>
+              This site is a working log, not a brochure. I write the honest
+              version: what I built, what broke, why it broke, what I changed, and
+              what I’d do differently if I restarted tomorrow.
+            </p>
           </div>
 
+          {/* Keep Current focus exactly as-is */}
           <div style={{ marginTop: 20 }}>
             <div className="kicker">Current focus</div>
             <ul className="bullets">
