@@ -18,7 +18,7 @@ const NOTES: NoteRow[] = [
   {
     slug: "site-honest-and-alive",
     title: "This site: turning a portfolio into something honest and alive",
-    desc: "Next.js + Vercel, built as a log — not a brochure.",
+    desc: "Next.js + Vercel, built as a log not a brochure.",
     date: "Dec 27, 2025",
   },
   {
