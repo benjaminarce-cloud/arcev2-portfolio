@@ -390,7 +390,6 @@ export default async function WorkDetailPage({
           {project.subtitle}
         </p>
 
-        {/* Accent row UNDER subtitle (the thing you meant) */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12, marginBottom: 18 }}>
           {project.tags.map((t) => (
             <span key={t} className="pill">
@@ -403,7 +402,6 @@ export default async function WorkDetailPage({
           {project.oneLine}
         </p>
 
-        {/* Quick scan */}
         <div
           style={{
             borderTop: "1px solid var(--hair)",
