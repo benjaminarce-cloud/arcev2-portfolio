@@ -90,7 +90,7 @@ const NOTES: Note[] = [
     date: "Dec 27, 2025",
     tags: ["meta", "portfolio", "vercel"],
     oneLine:
-      "Built on Next.js + Vercel — not as a brochure, but as a place to be honest about what I built, what broke, and what I learned.",
+      "Built on Next.js + Vercel not as a brochure, but as a place to be honest about what I built, what broke, and what I learned.",
     quickScan: {
       context:
         "I wanted a portfolio that behaves like a CV: fast scan first, detail only when you care. The site is the log.",
