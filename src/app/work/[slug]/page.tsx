@@ -345,7 +345,7 @@ const WORK: WorkProject[] = [
 
     technical: [
       {
-        heading: "Technical appendix (for the nerds)",
+        heading: "Technical appendix",
         bullets: [
           "Problem type: CVRPTW (Capacitated Vehicle Routing Problem with Time Windows)",
           "Language: Python",
