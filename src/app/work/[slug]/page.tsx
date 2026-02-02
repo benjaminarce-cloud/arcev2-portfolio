@@ -466,7 +466,7 @@ export default async function WorkDetailPage({
           {project.footerNote ? (
             <>
               <hr />
-              <p style={{ color: "rgba(21,21,21,0.82)" }}>{project.footerNote}</p>
+<p style={{ color: "var(--text)", opacity: 0.82 }}>{project.footerNote}</p>
             </>
           ) : null}
 
