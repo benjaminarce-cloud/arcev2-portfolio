@@ -11,7 +11,7 @@ type NoteRow = {
 const NOTES: NoteRow[] = [
   {
     slug: "film-portfolio-build-quick-overview",
-    title: "Film Portfolio Build — Quick Overview",
+    title: "Film Portfolio Build",
     desc: "Next.js 15 + Cloudinary video portfolio: what shipped, what broke, and the patterns that stuck.",
     date: "Jan 2026",
   },
