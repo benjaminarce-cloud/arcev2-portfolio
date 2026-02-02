@@ -29,7 +29,7 @@ const workItems = [
 ];
 
 const latestNote = {
-  title: "Film Portfolio Build — Quick Overview",
+  title: "Film Portfolio Build",
   desc: "Next.js 15 + Cloudinary: what shipped, what broke, and patterns that stuck.",
   date: "Jan 2026",
   href: "/notes/film-portfolio-build-quick-overview",
