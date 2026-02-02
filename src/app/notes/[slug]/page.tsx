@@ -20,7 +20,7 @@ type Note = {
 const NOTES: Note[] = [
   {
     slug: "film-portfolio-build-quick-overview",
-    title: "Film Portfolio Build — Quick Overview",
+    title: "Film Portfolio Build",
     date: "Jan 2026",
     tags: ["nextjs", "video", "cloudinary", "ffmpeg", "debugging"],
     oneLine:
