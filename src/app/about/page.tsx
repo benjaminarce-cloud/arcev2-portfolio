@@ -18,7 +18,7 @@ export default function AboutPage() {
         <div className="prose">
           {/* Replace "Notes from my brain" bullets with the new text */}
           <div style={{ marginTop: 22 }}>
-            <div className="kicker">Notes</div>
+            <div className="kicker">About me</div>
 
             <p>
               I’m an industrial engineering student focused on data, optimization,
