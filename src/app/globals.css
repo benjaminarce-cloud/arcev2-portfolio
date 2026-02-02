@@ -4,16 +4,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 :root {
-  /* Anthropic-ish warm palette */
-  --bg: #f7f3ea;          /* warm off-white */
-  --panel: #f2ede2;       /* subtle warm panel */
-  --text: #151515;        /* near-black */
-  --muted: #4b4b4b;       /* readable muted */
-  --faint: #6a6a6a;       /* faint meta */
+  /* Warm palette */
+  --bg: #f7f3ea;
+  --panel: #f2ede2;
+  --text: #151515;
+  --muted: rgba(21, 21, 21, 0.72);
+  --faint: rgba(21, 21, 21, 0.55);
   --hair: rgba(21, 21, 21, 0.10);
   --hair-2: rgba(21, 21, 21, 0.14);
 
-  /* Accent: restrained terracotta */
+  /* Accent */
   --accent: #c45a3b;
   --accent-2: rgba(196, 90, 59, 0.18);
 
@@ -27,13 +27,25 @@
 
   /* Rhythm */
   --gutter: clamp(20px, 5vw, 72px);
-  --section: clamp(28px, 4vw, 56px); /* OPTION A: reduced top/bottom page padding */
-  --row-pad-y: clamp(14px, 1.9vw, 20px); /* tightened vertical spacing */
-  --row-gap: 14px;
+  --section: clamp(28px, 4vw, 56px);
+  --row-pad-y: clamp(14px, 1.9vw, 20px);
 
   /* Radii */
   --r-sm: 10px;
   --r-md: 14px;
+}
+
+/* Dark theme overrides */
+:root[data-theme="dark"] {
+  --bg: #0f0f10;
+  --panel: #171718;
+  --text: #f2f2f2;
+  --muted: rgba(242, 242, 242, 0.72);
+  --faint: rgba(242, 242, 242, 0.55);
+  --hair: rgba(242, 242, 242, 0.10);
+  --hair-2: rgba(242, 242, 242, 0.14);
+  --accent: #d06a4a;
+  --accent-2: rgba(208, 106, 74, 0.22);
 }
 
 /* Base reset-ish */
@@ -41,7 +53,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
 }
@@ -96,6 +109,10 @@ a {
   border-bottom: 1px solid var(--hair);
 }
 
+:root[data-theme="dark"] .site-header {
+  background: rgba(15, 15, 16, 0.72);
+}
+
 .header-inner {
   height: 72px;
   display: flex;
@@ -105,9 +122,9 @@ a {
 }
 
 .brand {
-  font-size: clamp(20px, 1.8vw, 28px);
-  font-weight: 850;
-  letter-spacing: -0.03em;
+  font-size: clamp(18px, 1.3vw, 22px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
@@ -125,7 +142,7 @@ a {
 
 .nav-link {
   font-size: 14px;
-  color: rgba(21, 21, 21, 0.72);
+  color: var(--muted);
   transition: color 140ms ease, opacity 140ms ease;
 }
 
@@ -142,7 +159,7 @@ a {
 .icon-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .icon-link {
@@ -161,12 +178,16 @@ a {
   border-color: var(--hair-2);
 }
 
+:root[data-theme="dark"] .icon-link:hover {
+  background: rgba(242, 242, 242, 0.06);
+}
+
 /* Page structure */
 .page {
   padding: var(--section) 0;
 }
 
-/* Home-only title (bigger than page-title) */
+/* Home-only title */
 .home-title {
   font-size: clamp(44px, 5.4vw, 74px);
   line-height: 1.02;
@@ -185,12 +206,11 @@ a {
 
 .page-subtitle {
   font-size: 16px;
-  color: rgba(21, 21, 21, 0.72);
+  color: var(--muted);
   max-width: 70ch;
   margin: 0;
 }
 
-/* “Eye-catching words” without looking gimmicky */
 .emph {
   box-shadow: inset 0 -0.45em 0 var(--accent-2);
   padding: 0 0.06em;
@@ -203,7 +223,7 @@ a {
 
 /* Lists (work/notes) */
 .list {
-  margin-top: 18px;              /* tighter */
+  margin-top: 18px;
   border-top: 1px solid var(--hair);
 }
 
@@ -219,10 +239,14 @@ a {
   background: rgba(21, 21, 21, 0.02);
 }
 
+:root[data-theme="dark"] .row:hover {
+  background: rgba(242, 242, 242, 0.04);
+}
+
 .row-main {
   display: flex;
   flex-direction: column;
-  gap: 7px;                      /* slightly tighter */
+  gap: 7px;
   min-width: 0;
 }
 
@@ -235,7 +259,7 @@ a {
 
 .row-desc {
   font-size: 15px;
-  color: rgba(21, 21, 21, 0.72);
+  color: var(--muted);
   margin: 0;
   max-width: 72ch;
 }
@@ -243,7 +267,7 @@ a {
 .row-meta {
   font-family: var(--font-mono);
   font-size: 12px;
-  color: rgba(21, 21, 21, 0.55);
+  color: var(--faint);
   letter-spacing: 0.02em;
   white-space: nowrap;
   padding-top: 4px;
@@ -265,6 +289,10 @@ a {
   color: rgba(21, 21, 21, 0.82);
 }
 
+:root[data-theme="dark"] .prose p {
+  color: rgba(242, 242, 242, 0.82);
+}
+
 .prose hr {
   border: 0;
   border-top: 1px solid var(--hair);
@@ -277,24 +305,89 @@ a {
   font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(21, 21, 21, 0.55);
+  color: var(--faint);
 }
 
-.hairline {
-  border-top: 1px solid var(--hair);
+/* About lists */
+.bullets {
+  margin: 12px 0 0;
+  padding-left: 0;
+  list-style: none;
 }
 
-.pill {
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+  margin: 8px 0;
+  color: rgba(21, 21, 21, 0.82);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+:root[data-theme="dark"] .bullets li {
+  color: rgba(242, 242, 242, 0.82);
+}
+
+.bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--faint);
+}
+
+/* Theme toggle — icon-only sliding segmented control */
+.theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: rgba(21, 21, 21, 0.70);
   border: 1px solid var(--hair);
   border-radius: 999px;
-  padding: 6px 10px;
+  padding: 3px;
   background: rgba(21, 21, 21, 0.02);
+  height: 34px;
+  width: 78px; /* icon-only */
+}
+
+:root[data-theme="dark"] .theme-toggle {
+  background: rgba(242, 242, 242, 0.06);
+}
+
+.theme-toggle .thumb {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: var(--panel);
+  transition: transform 180ms ease;
+  will-change: transform;
+}
+
+.theme-toggle[data-theme="dark"] .thumb {
+  transform: translateX(calc(100% + 3px));
+}
+
+.theme-toggle button {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  height: 28px;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: color 140ms ease;
+}
+
+.theme-toggle[data-theme="light"] button[data-side="light"],
+.theme-toggle[data-theme="dark"] button[data-side="dark"] {
+  color: var(--text);
 }
 
 /* Mobile tweaks */
@@ -319,28 +412,4 @@ a {
   .row-title {
     font-size: 20px;
   }
-}
-
-/* About lists — make bullets feel designed */
-.bullets {
-  margin: 12px 0 0;
-  padding-left: 0;
-  list-style: none;
-}
-
-.bullets li {
-  position: relative;
-  padding-left: 18px;
-  margin: 8px 0;
-  color: rgba(21, 21, 21, 0.82);
-  font-size: 15px;
-  line-height: 1.55;
-}
-
-.bullets li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: rgba(21, 21, 21, 0.55);
 }
