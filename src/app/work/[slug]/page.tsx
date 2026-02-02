@@ -418,15 +418,15 @@ export default async function WorkDetailPage({
           <div style={{ display: "grid", gap: 10 }}>
             <div>
               <span className="emph">What it is</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{project.quickScan.whatItIs}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{project.quickScan.whatItIs}</span>
             </div>
             <div>
               <span className="emph">Why it matters</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{project.quickScan.whyItMatters}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{project.quickScan.whyItMatters}</span>
             </div>
             <div>
               <span className="emph">Payoff</span>{" "}
-              <span style={{ color: "rgba(21,21,21,0.82)" }}>{project.quickScan.payoff}</span>
+<span style={{ color: "var(--text)", opacity: 0.82 }}>{project.quickScan.payoff}</span>
             </div>
           </div>
         </div>
