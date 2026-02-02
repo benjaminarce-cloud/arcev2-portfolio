@@ -414,3 +414,61 @@ a {
     font-size: 20px;
   }
 }
+/* ------------------------------------------------------------
+   Dark-mode safety net
+   (prevents leftover hard-coded light colors from disappearing)
+------------------------------------------------------------ */
+
+.prose {
+  color: var(--muted);
+}
+
+.prose p,
+.prose li,
+.prose span,
+.prose small,
+.prose em,
+.prose blockquote,
+.prose figcaption {
+  color: var(--muted);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose strong {
+  color: var(--text);
+}
+
+/* Links inside prose stay readable in both themes */
+.prose a {
+  color: var(--text);
+  border-bottom: 1px solid var(--hair-2);
+  padding-bottom: 1px;
+}
+
+.prose a:hover {
+  border-bottom-color: var(--text);
+}
+
+/* If you have little “tag”/“meta” chips in slug pages, this catches them */
+.tag,
+.tags a,
+.meta,
+.caption {
+  color: var(--muted);
+}
+
+/* Code blocks / inline code (if any) */
+.prose code {
+  color: var(--text);
+  background: rgba(21, 21, 21, 0.04);
+  border: 1px solid var(--hair);
+  border-radius: 8px;
+  padding: 0.15em 0.35em;
+}
+
+:root[data-theme="dark"] .prose code {
+  background: rgba(242, 240, 234, 0.08);
+}
