@@ -4,24 +4,24 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Benjamin Arce — AI systems engineer in Guadalajara, currently at TBM Carriers.",
+    "Benjamin Arce, AI systems engineer in Guadalajara, currently at TBM Carriers.",
 };
 
 const roles = [
   {
-    when: "2026 — now",
+    when: "Since 2026",
     what: "AI Engineer",
     where: "TBM Carriers",
-    note: "MCP servers and agent integration across the operating stack — operations, finance, HR, billing, planning.",
+    note: "MCP servers and agent integration across the operating stack: operations, finance, HR, billing, planning.",
   },
   {
-    when: "Nov 2025 — Jul 2026",
+    when: "Nov 2025 to Jul 2026",
     what: "Supply Chain Data & BI Analyst, Internship",
     where: "Advanced Sterilization Products",
     note: "Freight, commercial, and logistics analytics across six-country LATAM operations.",
   },
   {
-    when: "Feb 2024 — Aug 2025",
+    when: "Feb 2024 to Aug 2025",
     what: "Logistics & Operations Analyst, Internship",
     where: "ROCA Logistics",
     note: "Carrier billing audits and weekly reporting, rebuilt to run on their own.",
@@ -54,7 +54,7 @@ export default function AboutPage() {
 
         <p className="lede">
           I&rsquo;m Benjamin Arce. I build AI systems for companies that move
-          physical things — trucks, freight, inventory — and for the finance
+          physical things (trucks, freight, inventory) and for the finance
           teams that have to account for them.
         </p>
 
@@ -128,11 +128,11 @@ export default function AboutPage() {
               platforms.
             </li>
             <li>
-              Building VUX Truck, an English platform for drivers, through its
+              Building VoxTruck, an English platform for drivers, through its
               internal pilot.
             </li>
             <li>
-              Working toward a U.S. master&rsquo;s — tightening the story, the
+              Working toward a U.S. master&rsquo;s: tightening the story, the
               work, and the proof.
             </li>
             <li>Keeping this site honest: quick scan first, then the detail.</li>

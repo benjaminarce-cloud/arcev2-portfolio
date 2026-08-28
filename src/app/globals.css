@@ -213,7 +213,7 @@ a {
   font-variation-settings: "SOFT" 60, "WONK" 1;
 }
 
-/* Standfirst — the paragraph that sits under a title. */
+/* Standfirst: the paragraph that sits under a title. */
 .lede {
   font-size: clamp(17px, 1.5vw, 20px);
   line-height: 1.55;
@@ -266,7 +266,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   The index — the signature element.
+   The index: the signature element.
    Contents-page rows held apart by air. Title goes italic on hover.
 ------------------------------------------------------------ */
 
@@ -317,15 +317,22 @@ a.pill:hover {
   pointer-events: none;
 }
 
-.row:hover .row-title > span,
-.row:focus-visible .row-title > span {
+/* Scoped to links: a row that goes nowhere shouldn't answer the cursor. */
+a.row:hover .row-title > span,
+a.row:focus-visible .row-title > span {
   font-style: italic;
   font-variation-settings: "SOFT" 60, "WONK" 1;
 }
 
-.row:hover .row-meta,
-.row:focus-visible .row-meta {
+a.row:hover .row-meta,
+a.row:focus-visible .row-meta {
   color: var(--ink);
+}
+
+.row-static .row-title,
+.row-static .row-desc,
+.row-static .row-meta {
+  color: var(--ink-faint);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -466,7 +473,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   CV list — dated column beside the entry, no bullets
+   CV list: dated column beside the entry, no bullets
 ------------------------------------------------------------ */
 
 .cv {
@@ -521,7 +528,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   Quick scan block — set as a sidenote, not a boxed callout
+   Quick scan block: set as a sidenote, not a boxed callout
 ------------------------------------------------------------ */
 
 .scan {
@@ -542,7 +549,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   Now marker — the one place the blue shows up in content
+   Now marker: the one place the blue shows up in content
 ------------------------------------------------------------ */
 
 .now {
@@ -561,7 +568,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   Folio — running foot, like a magazine page
+   Folio: running foot, like a magazine page
 ------------------------------------------------------------ */
 
 .folio {
@@ -582,7 +589,7 @@ a.pill:hover {
 }
 
 /* ------------------------------------------------------------
-   Theme toggle — one quiet glyph, no segmented pill
+   Theme toggle: one quiet glyph, no segmented pill
 ------------------------------------------------------------ */
 
 .theme-toggle {

@@ -1,5 +1,7 @@
 // src/app/page.tsx
 import Link from "next/link";
+import SiteList from "@/components/SiteList";
+import { LIVE_SITES } from "@/lib/sites";
 import { WORK } from "@/lib/work";
 import { NOTES } from "@/lib/notes";
 
@@ -19,7 +21,7 @@ export default function HomePage() {
 
         <p className="lede">
           Production MCP servers, agent integrations, and automated reporting
-          for freight and finance teams — across six-country LATAM operations.
+          for freight and finance teams, across six-country LATAM operations.
           Based in Guadalajara.
         </p>
 
@@ -53,6 +55,26 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section style={{ marginTop: "var(--space-block)" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              gap: 20,
+            }}
+          >
+            <h2 className="kicker" style={{ margin: 0 }}>
+              Sites
+            </h2>
+            <Link href="/work" className="pill">
+              And two in build
+            </Link>
+          </div>
+
+          <SiteList sites={LIVE_SITES} label="Live client sites" />
         </section>
 
         <section style={{ marginTop: "var(--space-block)" }}>

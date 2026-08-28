@@ -8,7 +8,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  // Real italics, not a synthesized slant — the index hover depends on it.
+  // Real italics, not a synthesized slant. The index hover depends on it.
   style: ["normal", "italic"],
   axes: ["opsz", "SOFT", "WONK"],
   variable: "--font-fraunces",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://benjaminarce.dev"),
   title: {
     default: "Benjamin Arce",
-    template: "%s — Benjamin Arce",
+    template: "%s · Benjamin Arce",
   },
   description:
     "AI systems engineer. I build MCP servers, agent integrations, and automated reporting for supply chain and finance operations.",

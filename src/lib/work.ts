@@ -38,16 +38,16 @@ export const WORK: WorkProject[] = [
     subtitle:
       "Exposing a freight carrier's enterprise stack to Claude and ChatGPT as typed, auth-scoped tools under a single query surface.",
     desc: "Five enterprise platforms as one query surface. Cross-system lookups: three hours to fifteen seconds.",
-    date: "2026 — now",
+    date: "Since 2026",
     tags: ["mcp", "claude", "integration", "logistics"],
     oneLine:
       "The company had ten systems and no way to ask them a single question. This is the layer that lets you.",
 
     quickScan: {
       whatItIs:
-        "A production MCP server at TBM Carriers that exposes enterprise platforms — fleet maintenance, TMS, telematics, accounting, and CRM — to Claude and ChatGPT as typed, auth-scoped tools. Five are live; the goal is the whole stack.",
+        "A production MCP server at TBM Carriers that exposes enterprise platforms (fleet maintenance, TMS, telematics, accounting, and CRM) to Claude and ChatGPT as typed, auth-scoped tools. Five are live; the goal is the whole stack.",
       whyItMatters:
-        "Any question that crossed two systems was a human errand. Someone filed a request, someone else opened five separate UIs, and the answer arrived hours later — by which point the decision had usually been made without it.",
+        "Any question that crossed two systems was a human errand. Someone filed a request, someone else opened five separate UIs, and the answer arrived hours later, by which point the decision had usually been made without it.",
       payoff:
         "Cross-platform lookups that spanned five separate UIs went from about three hours to under fifteen seconds, and ops and finance staff now query live operational data themselves instead of queueing behind an analyst.",
     },
@@ -57,14 +57,14 @@ export const WORK: WorkProject[] = [
         heading: "What this actually is",
         body: [
           "TBM Carriers is a logistics operator running the usual sprawl: a TMS for loads, telematics for the trucks, a maintenance system for the fleet, an accounting platform for the money, and a CRM for the customers. Each one is fine on its own. None of them talk.",
-          "The CEO's framing was a second brain — one place to ask the company a question and get an answer drawn from every system at once, including the questions nobody thought to ask.",
+          "The CEO's framing was a second brain: one place to ask the company a question and get an answer drawn from every system at once, including the questions nobody thought to ask.",
           "The build is an MCP server. Each platform gets a set of typed tools with real auth scoping, so an assistant can read across the stack without anyone handing out standing credentials to five different systems.",
         ],
       },
       {
         heading: "The part that isn't the server",
         body: [
-          "Standing up the connector was the tractable half. The harder half is integration into how people actually work — operations, finance, HR, billing, planning — because a query surface nobody reaches for is just a well-typed API.",
+          "Standing up the connector was the tractable half. The harder half is integration into how people actually work (operations, finance, HR, billing, planning), because a query surface nobody reaches for is just a well-typed API.",
           "That means meeting each function where its questions already live, and being specific about which ones are worth asking a model at all.",
         ],
         bullets: [
@@ -86,19 +86,19 @@ export const WORK: WorkProject[] = [
       "Ongoing. The five platforms live today are the floor, not the target.",
   },
   {
-    slug: "vux-truck",
-    title: "VUX Truck",
+    slug: "voxtruck",
+    title: "VoxTruck",
     subtitle:
       "An English learning platform built for truck drivers, taught in the vocabulary of the job rather than the classroom.",
     desc: "English for drivers, taught in logistics context. Speech scoring and adaptive difficulty. In internal pilot.",
-    date: "2026 — now",
+    date: "Since 2026",
     tags: ["product", "ml", "speech", "logistics"],
     oneLine:
       "Generic language apps teach you to order coffee. Drivers need to handle a dispatcher, a border officer, and a DOT inspection.",
 
     quickScan: {
       whatItIs:
-        "A language platform that teaches drivers English inside the situations they actually hit — dispatch calls, border crossings, paperwork, inspections — with speech scoring and lesson difficulty that adapts to the individual driver.",
+        "A language platform that teaches drivers English inside the situations they actually hit (dispatch calls, border crossings, paperwork, inspections) with speech scoring and lesson difficulty that adapts to the individual driver.",
       whyItMatters:
         "For a cross-border carrier, a driver's English is an operational variable, not a personal enrichment goal. It shows up in delays, misread instructions, and inspections that go longer than they should.",
       payoff:
@@ -109,7 +109,7 @@ export const WORK: WorkProject[] = [
       {
         heading: "What this actually is",
         body: [
-          "VUX Truck is an English learning platform for professional drivers, built with TBM Carriers.",
+          "VoxTruck is an English learning platform for professional drivers, built with TBM Carriers.",
           "The premise is that context is most of the value. A driver doesn't need a general A1-to-C1 ladder; they need to be fluent in the forty situations that make up their week, and confident enough to speak in them under pressure.",
           "So the content is logistics-native: the phrasing a dispatcher actually uses, the questions an officer actually asks, the documents that actually get handed across.",
         ],
@@ -117,8 +117,8 @@ export const WORK: WorkProject[] = [
       {
         heading: "Where the machine learning does work",
         bullets: [
-          "Speech scoring — the driver speaks, and the model scores pronunciation and fluency, so practice doesn't require a human on the other end",
-          "Adaptive difficulty — the system tracks what an individual driver keeps missing and reshapes what it serves next, instead of marching everyone through the same sequence",
+          "Speech scoring: the driver speaks, and the model scores pronunciation and fluency, so practice doesn't require a human on the other end",
+          "Adaptive difficulty: the system tracks what an individual driver keeps missing and reshapes what it serves next, instead of marching everyone through the same sequence",
         ],
         body: [
           "Both exist for the same reason: a driver's schedule doesn't accommodate a fixed class. The learning has to fit into the gaps, and it has to be useful without a teacher present.",
@@ -127,7 +127,7 @@ export const WORK: WorkProject[] = [
       {
         heading: "Honest status",
         body: [
-          "Internal pilot with the company's own drivers. Contained on purpose — a language product with confident-sounding wrong feedback is worse than no product, so the scoring gets tested against real drivers before it gets tested against a market.",
+          "Internal pilot with the company's own drivers. Contained on purpose. A language product with confident-sounding wrong feedback is worse than no product, so the scoring gets tested against real drivers before it gets tested against a market.",
         ],
       },
     ],
@@ -138,7 +138,7 @@ export const WORK: WorkProject[] = [
     slug: "autonomous-finance-pipeline",
     title: "Autonomous Finance Reporting Pipeline",
     subtitle:
-      "A zero-touch pipeline that ingests accounting ledgers and five platform exports and writes a reconciled dataset — with schema drift caught rather than absorbed.",
+      "A zero-touch pipeline that ingests accounting ledgers and five platform exports and writes a reconciled dataset, with schema drift caught rather than absorbed.",
     desc: "Ten chained-VLOOKUP workbooks retired. A six-hour weekly build compressed to twenty minutes.",
     date: "2026",
     tags: ["automation", "claude-api", "finance", "power-automate"],
@@ -149,7 +149,7 @@ export const WORK: WorkProject[] = [
       whatItIs:
         "A pipeline built on Power Automate, the Claude API, and Power Query that ingests accounting ledgers and five platform exports, extracts and normalizes line items through structured-output model calls, and writes a reconciled dataset with schema-drift detection.",
       whyItMatters:
-        "The reporting it replaced ran through ten chained-VLOOKUP workbooks. Its failure mode wasn't crashing — it was a shifted column silently corrupting totals that then went out unreviewed.",
+        "The reporting it replaced ran through ten chained-VLOOKUP workbooks. Its failure mode wasn't crashing. It was a shifted column silently corrupting totals that then went out unreviewed.",
       payoff:
         "A six-hour weekly build became twenty minutes, a 94% reduction, and the silent-failure path is now a loud one.",
     },
@@ -159,7 +159,7 @@ export const WORK: WorkProject[] = [
         heading: "What this actually is",
         body: [
           "Finance was assembling a weekly picture by hand out of an accounting ledger and five separate platform exports, each with its own idea of how a line item should be shaped.",
-          "The glue was ten workbooks of chained VLOOKUPs. That structure is fragile in a specific and dangerous way: it doesn't announce failure. If an upstream export gains a column, the lookups keep returning values — just the wrong ones.",
+          "The glue was ten workbooks of chained VLOOKUPs. That structure is fragile in a specific and dangerous way: it doesn't announce failure. If an upstream export gains a column, the lookups keep returning values, just the wrong ones.",
           "The pipeline replaces the glue. Exports land, structured-output model calls extract and normalize the line items into one schema, and the result is written as a reconciled dataset.",
         ],
       },
@@ -167,7 +167,7 @@ export const WORK: WorkProject[] = [
         heading: "Why an LLM belongs here at all",
         body: [
           "Not for judgment. For shape.",
-          "The variance across five exports isn't semantic, it's cosmetic — the same concept described five ways, renamed between versions, with inconsistent nesting. Writing deterministic parsers for all of it is possible and miserable, and every upstream change reopens the work.",
+          "The variance across five exports isn't semantic, it's cosmetic: the same concept described five ways, renamed between versions, with inconsistent nesting. Writing deterministic parsers for all of it is possible and miserable, and every upstream change reopens the work.",
           "Structured outputs handle the normalization while keeping the result typed, which means it can be validated rather than trusted.",
         ],
       },
@@ -175,7 +175,7 @@ export const WORK: WorkProject[] = [
         heading: "Schema drift is the actual feature",
         body: [
           "The speed is the headline, but the reason I'd defend this build is the drift detection.",
-          "The old process was fast enough to survive and wrong often enough to matter. Catching the moment an upstream schema changes — and stopping, loudly — is worth more than the five hours and forty minutes.",
+          "The old process was fast enough to survive and wrong often enough to matter. Catching the moment an upstream schema changes, and stopping loudly, is worth more than the five hours and forty minutes.",
         ],
       },
     ],
@@ -195,7 +195,7 @@ export const WORK: WorkProject[] = [
       whatItIs:
         "An audit of LATAM freight performance across six countries that took a KPI already signed off as healthy and disaggregated it down to the order level.",
       whyItMatters:
-        "Aggregate freight-to-sales came in at 2.13% against a 3% target. That is a passing number, and passing numbers stop getting looked at. Underneath it, 57.8% of individual orders across 1,634 deliveries — against $275M MXN of revenue — were in breach.",
+        "Aggregate freight-to-sales came in at 2.13% against a 3% target. That is a passing number, and passing numbers stop getting looked at. Underneath it, 57.8% of individual orders across 1,634 deliveries, against $275M MXN of revenue, were in breach.",
       payoff:
         "$0.5M MXN quantified as recoverable, traced to northern-Mexico shipments running freight-to-sales above 1,000%, and the whole thing reframed from a rate problem into an order-sizing problem.",
     },
@@ -206,21 +206,21 @@ export const WORK: WorkProject[] = [
         body: [
           "The team measured freight health as freight cost over sales, rolled up across the region. At 2.13% against a 3% ceiling, there was nothing to discuss.",
           "But a regional average weights by revenue, which means large healthy orders can carry an arbitrary number of small catastrophic ones. Splitting the same data per order, the majority of deliveries were failing the same target the region was passing.",
-          "The extreme tail was northern-Mexico shipments where freight-to-sales ran above 1,000% — freight costing more than ten times the value of what was on the truck.",
+          "The extreme tail was northern-Mexico shipments where freight-to-sales ran above 1,000%, freight costing more than ten times the value of what was on the truck.",
         ],
       },
       {
         heading: "The reframe",
         body: [
           "The instinct with a freight problem is to go negotiate rates. That would have been the wrong project.",
-          "Nothing was wrong with the rates. What was wrong was the size of the orders being shipped against them — small orders moving on the same lanes as large ones, each one paying a fixed cost the order value couldn't support.",
+          "Nothing was wrong with the rates. What was wrong was the size of the orders being shipped against them. Small orders moving on the same lanes as large ones, each one paying a fixed cost the order value couldn't support.",
           "That makes it an order-sizing and consolidation question, owned by commercial and planning, not a procurement question owned by logistics. Getting that distinction right is most of what the analysis was for.",
         ],
       },
       {
         heading: "What I'd tell someone starting this",
         body: [
-          "Be suspicious of any KPI that has been green long enough that nobody reads it anymore. Aggregation is not neutral — it is a choice about what you are willing to stop seeing.",
+          "Be suspicious of any KPI that has been green long enough that nobody reads it anymore. Aggregation is not neutral. It is a choice about what you are willing to stop seeing.",
           "Also: the finding is only half the work. A number nobody owns doesn't get fixed, so the deliverable had to name whose problem it was.",
         ],
       },
@@ -262,7 +262,7 @@ export const WORK: WorkProject[] = [
         heading: "Why the top layer only works because of the bottom one",
         body: [
           "Natural-language analytics is easy to demo and hard to trust, and the reason is almost never the language model. It's that it gets pointed at data nobody has cleaned.",
-          "The automation wasn't a prerequisite I did first out of diligence — it's the thing that makes the question-asking layer safe. A plain-language query over a hand-assembled export inherits every inconsistency in that export and presents the result with total confidence.",
+          "The automation wasn't a prerequisite I did first out of diligence. It's the thing that makes the question-asking layer safe. A plain-language query over a hand-assembled export inherits every inconsistency in that export and presents the result with total confidence.",
         ],
       },
       {
@@ -281,7 +281,7 @@ export const WORK: WorkProject[] = [
     slug: "llm-search-visibility-engine",
     title: "LLM Search Visibility Engine",
     subtitle:
-      "Getting a live DTC brand cited by ChatGPT — from 0% to 36% on a 53-query benchmark.",
+      "Getting a live DTC brand cited by ChatGPT, from 0% to 36% on a 53-query benchmark.",
     desc: "Zero to 36% citation rate on a 53-query benchmark, with retrieval tracked rather than assumed.",
     date: "2025",
     tags: ["nextjs", "json-ld", "claude-api", "retrieval"],
@@ -292,7 +292,7 @@ export const WORK: WorkProject[] = [
       whatItIs:
         "A visibility system for a live direct-to-consumer brand, built on Next.js with JSON-LD entity schema, an llms.txt surface, canary-ID retrieval tracking, and a seven-article NIH-referenced content layer.",
       whyItMatters:
-        "The brand was invisible to assistant-mediated search. On a 53-query benchmark it was cited 0% of the time — not ranked low, absent.",
+        "The brand was invisible to assistant-mediated search. On a 53-query benchmark it was cited 0% of the time. Not ranked low, absent.",
       payoff:
         "Citation rate went from 0% to 36% on the same benchmark, and the canary IDs made it possible to prove retrieval rather than infer it from traffic.",
     },
@@ -302,7 +302,7 @@ export const WORK: WorkProject[] = [
         heading: "What this actually is",
         body: [
           "The question was simple to state and awkward to answer: when someone asks an assistant about this product category, does this brand come back?",
-          "Step one was making that measurable — a fixed 53-query benchmark, run repeatedly, so the answer was a rate and not an anecdote. The starting rate was zero.",
+          "Step one was making that measurable: a fixed 53-query benchmark, run repeatedly, so the answer was a rate and not an anecdote. The starting rate was zero.",
         ],
       },
       {
@@ -311,7 +311,7 @@ export const WORK: WorkProject[] = [
           "JSON-LD entity schema, so the brand is a described entity rather than a page of prose a model has to infer structure from",
           "An llms.txt surface stating plainly what the brand is and what it can be cited for",
           "A seven-article content layer with NIH references, because unsourced claims in this category are correctly ignored",
-          "Canary IDs — distinctive retrievable strings — so a citation could be traced back to the exact document that produced it",
+          "Canary IDs, distinctive retrievable strings, so a citation could be traced back to the exact document that produced it",
         ],
       },
       {
@@ -335,7 +335,7 @@ export const WORK: WorkProject[] = [
 
     quickScan: {
       whatItIs:
-        "A Power BI dashboard that classifies each material–country pair as green/yellow/red based on on-hand vs safety stock, refreshes automatically, and supports quick slicing by country/material/status.",
+        "A Power BI dashboard that classifies each material-country pair as green/yellow/red based on on-hand vs safety stock, refreshes automatically, and supports quick slicing by country/material/status.",
       whyItMatters:
         "The original workflow was manual, inconsistent, and reactive: open Excel, scroll, guess what’s scary, then respond. No shared definition of “healthy” vs “risky.”",
       payoff:
@@ -414,7 +414,7 @@ export const WORK: WorkProject[] = [
     slug: "chokepoint-frontier-model",
     title: "Choke Point: CoWoS/HBM Thesis Log",
     subtitle:
-      "Tri-objective sim–opt model of the resilience–decarbonization trade-off at the CoWoS/HBM packaging chokepoint.",
+      "Tri-objective sim-opt model of the resilience-decarbonization trade-off at the CoWoS/HBM packaging chokepoint.",
     date: "Sep 2025",
     tags: ["thesis", "semiconductors", "research"],
     oneLine:
@@ -422,7 +422,7 @@ export const WORK: WorkProject[] = [
 
     quickScan: {
       whatItIs:
-        "A tri-objective simulation–optimization model focused on the CoWoS/HBM advanced packaging chokepoint, under disruption scenarios, optimizing cost vs resilience vs carbon.",
+        "A tri-objective simulation-optimization model focused on the CoWoS/HBM advanced packaging chokepoint, under disruption scenarios, optimizing cost vs resilience vs carbon.",
       whyItMatters:
         "A lot of resilience literature ends with “just collaborate and share data.” For semiconductors, that’s often unrealistic. The thesis flips the assumption and asks what one enterprise can do with private levers.",
       payoff:
@@ -482,7 +482,7 @@ export const WORK: WorkProject[] = [
       {
         heading: "Technical appendix",
         bullets: [
-          "Problem type: tri-objective simulation–optimization at a single chokepoint in a multi-echelon supply chain",
+          "Problem type: tri-objective simulation-optimization at a single chokepoint in a multi-echelon supply chain",
           "Decision layer: regions r, time t, products p, modes m; decisions like x_pr (alloc shares), c_r (safety capacity), mode shares by route/time",
           "Objectives: expected total cost; resilience metric (service loss / recovery time); life-cycle CO2 (process + logistics)",
           "Solution idea: multi-objective heuristic (e.g., NSGA-style) to generate designs; simulation evaluates designs across scenarios",

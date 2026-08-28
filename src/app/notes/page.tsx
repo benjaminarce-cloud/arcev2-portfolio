@@ -6,7 +6,7 @@ import { NOTES } from "@/lib/notes";
 export const metadata: Metadata = {
   title: "Notes",
   description:
-    "Engineering logs — what shipped, what broke, and what changed because of it.",
+    "Engineering logs: what shipped, what broke, and what changed because of it.",
 };
 
 export default function NotesPage() {

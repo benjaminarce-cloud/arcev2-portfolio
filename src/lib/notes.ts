@@ -26,7 +26,7 @@ export const NOTES: Note[] = [
     date: "Jan 2026",
     tags: ["nextjs", "video", "cloudinary", "ffmpeg", "debugging"],
     oneLine:
-      "Built a 31-project film portfolio on Next.js 15 with hover previews, autoplay flows, Cloudinary hosting, and a minimal A24-ish aesthetic — plus a bunch of real-world breakage fixes.",
+      "Built a 31-project film portfolio on Next.js 15 with hover previews, autoplay flows, Cloudinary hosting, and a minimal A24-ish aesthetic, plus a bunch of real-world breakage fixes.",
     quickScan: {
       context:
         "Client needed a fast, modern film portfolio: full-screen hero, responsive grid, video-first UX, and clean navigation that still feels premium.",
@@ -108,7 +108,7 @@ export const NOTES: Note[] = [
         body: [
           "Most portfolios waste time: big visuals, vague claims, and a lot of copy before you learn what someone actually shipped.",
           "This site is strict on purpose: one line should tell you why something matters; the rest is proof for people who want it.",
-          "The goal isn’t to pitch. It’s to leave a trail of real work — what worked, what was ugly, and what changed.",
+          "The goal isn’t to pitch. It’s to leave a trail of real work: what worked, what was ugly, and what changed.",
         ],
       },
       {
@@ -124,7 +124,7 @@ export const NOTES: Note[] = [
         heading: "Tone shift that mattered",
         body: [
           "I had to get comfortable with ‘projects as conversations.’",
-          "These pages are not pitch decks. They’re me talking through what I tried, what worked, what was ugly — then a technical appendix for people who care about the plumbing.",
+          "These pages are not pitch decks. They’re me talking through what I tried, what worked, what was ugly, then a technical appendix for people who care about the plumbing.",
         ],
       },
       {
@@ -145,7 +145,7 @@ export const NOTES: Note[] = [
     date: "Dec 05, 2025",
     tags: ["powerbi", "supply-chain", "automation"],
     oneLine:
-      "Built a Power BI dashboard for the LATAM supply chain team that compares safety stock vs on-hand stock and classifies each material–country pair as green / yellow / red.",
+      "Built a Power BI dashboard for the LATAM supply chain team that compares safety stock vs on-hand stock and classifies each material-country pair as green / yellow / red.",
     quickScan: {
       context:
         "Daily/weekly files were being handled manually. Definitions drifted across countries. The dashboard broke the moment a column changed.",
@@ -159,7 +159,7 @@ export const NOTES: Note[] = [
         heading: "What was happening",
         body: [
           "The workflow failed in small ways: inconsistent columns, missing tabs, mixed currencies, and country-level “creative formatting.”",
-          "The dashboard wasn’t wrong because visuals were wrong — it was wrong because inputs were unstable.",
+          "The dashboard wasn’t wrong because visuals were wrong. It was wrong because inputs were unstable.",
         ],
       },
       {

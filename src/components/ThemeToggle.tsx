@@ -3,7 +3,7 @@
 /**
  * One glyph, no segmented control. Which icon shows is decided in CSS from
  * the `data-theme` attribute the inline script in layout.tsx sets before
- * first paint — so there is no state to hydrate and no mismatch.
+ * first paint, so there is no state to hydrate and no mismatch.
  */
 export default function ThemeToggle() {
   function toggle() {
