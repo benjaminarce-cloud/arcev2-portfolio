@@ -1,80 +1,91 @@
 // src/app/page.tsx
 import Link from "next/link";
+import { WORK } from "@/lib/work";
+import { NOTES } from "@/lib/notes";
 
-const workItems = [
-  {
-    title: "Inbox → Inventory Radar",
-    desc: "Daily export → live LATAM traffic-light view of stock risk.",
-    date: "2025-10",
-    href: "/work/inbox-inventory-radar",
-  },
-  {
-    title: "Chokepoint Frontier Model",
-    desc: "Tri-objective mapping: cost vs resilience vs carbon at a CoWoS/HBM bottleneck.",
-    date: "2025-09",
-    href: "/work/chokepoint-frontier-model",
-  },
-  {
-    title: "Cost Flight Simulator",
-    desc: "Manufacturing what-if engine: margin impact in seconds.",
-    date: "2025-08",
-    href: "/work/cost-flight-simulator",
-  },
-  {
-    title: "Border Fleet Optimizer",
-    desc: "CVRPTW day plan optimized for cost (not distance).",
-    date: "2025-07",
-    href: "/work/border-fleet-optimizer",
-  },
-];
-
-const latestNote = {
-  title: "Film Portfolio Build",
-  desc: "Next.js 15 + Cloudinary: what shipped, what broke, and patterns that stuck.",
-  date: "Jan 2026",
-  href: "/notes/film-portfolio-build-quick-overview",
-};
+const selected = WORK.slice(0, 4);
+const latestNote = NOTES[0];
 
 export default function HomePage() {
   return (
     <div className="page">
       <div className="container">
-        <h1 className="page-title">
-          Portfolio <span className="accent">/</span>
+        <p className="kicker now">AI Engineer at TBM Carriers</p>
+
+        <h1 className="home-title" style={{ marginTop: 18 }}>
+          I build AI systems that <em>retire</em> manual reporting instead of
+          accelerating it.
         </h1>
 
-        <p className="page-subtitle" style={{ maxWidth: 720 }}>
-          Shipped work. Working notes. Nothing polished on purpose{" "}
-          <span className="accent">/</span>
+        <p className="lede">
+          Production MCP servers, agent integrations, and automated reporting
+          for freight and finance teams — across six-country LATAM operations.
+          Based in Guadalajara.
         </p>
 
-        <div style={{ marginTop: 14 }}>
-          <div className="kicker">Work</div>
-          <div className="list" aria-label="Work overview">
-            {workItems.map((item) => (
-              <Link key={item.href} href={item.href} className="row">
+        <section style={{ marginTop: "var(--space-block)" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              gap: 20,
+            }}
+          >
+            <h2 className="kicker" style={{ margin: 0 }}>
+              Selected work
+            </h2>
+            <Link href="/work" className="pill">
+              All work
+            </Link>
+          </div>
+
+          <div className="list" aria-label="Selected work">
+            {selected.map((item) => (
+              <Link key={item.slug} href={`/work/${item.slug}`} className="row">
                 <div className="row-main">
-                  <h2 className="row-title">{item.title}</h2>
-                  <p className="row-desc">{item.desc}</p>
+                  <h3 className="row-title" data-title={item.title}>
+                    <span>{item.title}</span>
+                  </h3>
+                  <p className="row-desc">{item.desc ?? item.subtitle}</p>
                 </div>
-                <div className="row-meta">{item.date}</div>
+                <span className="row-meta">{item.date}</span>
               </Link>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div style={{ marginTop: 34 }}>
-          <div className="kicker">Latest note</div>
-          <div className="list" aria-label="Latest note">
-            <Link href={latestNote.href} className="row">
-              <div className="row-main">
-                <h2 className="row-title">{latestNote.title}</h2>
-                <p className="row-desc">{latestNote.desc}</p>
-              </div>
-              <div className="row-meta">{latestNote.date}</div>
+        <section style={{ marginTop: "var(--space-block)" }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "baseline",
+              justifyContent: "space-between",
+              gap: 20,
+            }}
+          >
+            <h2 className="kicker" style={{ margin: 0 }}>
+              Latest note
+            </h2>
+            <Link href="/notes" className="pill">
+              All notes
             </Link>
           </div>
-        </div>
+
+          <div className="list" aria-label="Latest note">
+            <Link href={`/notes/${latestNote.slug}`} className="row">
+              <div className="row-main">
+                <h3 className="row-title" data-title={latestNote.title}>
+                  <span>{latestNote.title}</span>
+                </h3>
+                <p className="row-desc">
+                  {latestNote.desc ?? latestNote.oneLine}
+                </p>
+              </div>
+              <span className="row-meta">{latestNote.date}</span>
+            </Link>
+          </div>
+        </section>
       </div>
     </div>
   );
